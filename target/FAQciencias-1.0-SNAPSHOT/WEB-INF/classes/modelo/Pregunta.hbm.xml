@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Pregunta" table="pregunta" schema="public" optimistic-lock="version">
+        <id name="idpregunta" type="int">
+            <column name="idpregunta" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="modelo.Usuario" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" not-null="true" />
+        </property>
+        <property name="detalles" type="string">
+            <column name="detalles" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="vistas" type="java.lang.Integer">
+            <column name="vistas" />
+        </property>
+        <property name="activa" type="char">
+            <column name="activa" length="1" not-null="true" />
+        </property>
+        <set name="respuestas" table="respuesta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idpregunta" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Respuesta" />
+        </set>
+    </class>
+</hibernate-mapping>
