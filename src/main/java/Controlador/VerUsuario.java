@@ -1,14 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
+
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ViewScoped;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 /**
  *
- * @author Admin
+ * @author gerardo
  */
-public class VerUsuario {
+@ManagedBean
+@ViewScoped
+public class VerUsuario implements Serializable{
+     private List<Usuario> usuarios;
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
     
+    @PostConstruct
+    public void ver() {
+        UsuarioDAO dao = new UsuarioDAO();
+        usuarios = dao.usuarios();
+    }
 }
