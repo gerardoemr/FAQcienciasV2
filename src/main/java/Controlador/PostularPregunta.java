@@ -22,7 +22,7 @@ import modelo.Usuario;
 //Etiqueta para que viva este bean hasta que se cambie de pagina. util para jax
 @ViewScoped
 public class PostularPregunta {
-    private int idpregunta;
+     private int idpregunta;
      private Usuario usuario;
      private String titulo;
      private String detalles;
@@ -87,12 +87,16 @@ public class PostularPregunta {
     }
      
      public void postulaPregunta() {
-         Pregunta pregunta = new Pregunta(idpregunta,usuario,titulo,fecha,activa);
-         PreguntaDAO pd = new PreguntaDAO();
-         pd.insert(pregunta);
+         activa = '1';
+         fecha = new Date();
+         Pregunta pregunta = new Pregunta(usuario,titulo,fecha,activa);
+         if (verifica(pregunta)) {
+            PreguntaDAO pd = new PreguntaDAO();
+            pd.insert(pregunta);
+         }
      }
      
      private boolean verifica(Pregunta p) {
-         return false;
+         return true;
      }
 }
