@@ -1,4 +1,8 @@
-C:\Users\Admin\Documents\NetBeansProjects\IS\FAQciencias\src\main\java\modelo\HibernateUtil.java
-C:\Users\Admin\Documents\NetBeansProjects\IS\FAQciencias\src\main\java\modelo\Respuesta.java
-C:\Users\Admin\Documents\NetBeansProjects\IS\FAQciencias\src\main\java\modelo\Pregunta.java
-C:\Users\Admin\Documents\NetBeansProjects\IS\FAQciencias\src\main\java\modelo\Usuario.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\RespuestaDAO.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\Controlador\PostularPregunta.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\Respuesta.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\HibernateUtil.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\Usuario.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\PreguntaDAO.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\modelo\Pregunta.java
+C:\Users\Oxium\Dropbox\Lic-CC\IS\Proyecto\FAQciencias\src\main\java\Controlador\PostularRespuesta.java
