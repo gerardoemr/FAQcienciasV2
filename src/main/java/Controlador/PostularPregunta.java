@@ -7,8 +7,8 @@ package Controlador;
 
 /**
  *
- * @author Admin
+ * @author Oxium
  */
-public class AgregarRespuesta {
+public class PostularPregunta {
     
 }
