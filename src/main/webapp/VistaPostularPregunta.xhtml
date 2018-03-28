@@ -18,12 +18,12 @@
 
             <h:form>
                 <h:outputText value="Titulo:" />
-                <p:inputText value="#{PostularPregunta.nombre}" placeholder="Titulo"/>
+                <p:inputText value="#{postularPregunta.titulo}" placeholder="Titulo"/>
                 <br/>
                 <h:outputText value="Detalles" />
-                <p:inputText value="#{PostularPregunta.nombre}" placeholder="Detalles"/>
+                <p:inputText value="#{postularPregunta.detalles}" placeholder="Detalles"/>
                 <br/>
-                <p:commandButton value=" Aceptar " action="#{PostularPreguntas.postularPregunta()}" />
+                <p:commandButton value=" Aceptar " action="#{postularPregunta.postulaPregunta()}" />
             </h:form>
 
         </h:body>

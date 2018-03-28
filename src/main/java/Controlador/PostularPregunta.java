@@ -6,8 +6,9 @@
 package Controlador;
 
 import java.util.Date;
-import javax.annotation.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import modelo.Pregunta;
 import modelo.PreguntaDAO;
 import modelo.Usuario;
@@ -17,10 +18,8 @@ import modelo.Usuario;
  * @author Oxium
  */
 
-//Etiqueta para decirle a jsf que esta clase es un controlador
 @ManagedBean
-//Etiqueta para que viva este bean hasta que se cambie de pagina. util para jax
-@ViewScoped
+@RequestScoped
 public class PostularPregunta {
      private int idpregunta;
      private Usuario usuario;
@@ -86,7 +85,11 @@ public class PostularPregunta {
         this.activa = activa;
     }
      
-     public void postulaPregunta() {
+     public String postulaPregunta() {
+         usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+         if(usuario == null) {
+             return "/LoginIH?faces-redirect=true";
+         }
          activa = '1';
          fecha = new Date();
          Pregunta pregunta = new Pregunta(usuario,titulo,fecha,activa);
@@ -94,8 +97,9 @@ public class PostularPregunta {
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
          }
+         return "/InicioIH?faces-redirect=true";
      }
-     
+        
      private boolean verifica(Pregunta p) {
          return true;
      }

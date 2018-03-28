@@ -1,8 +1,0 @@
-modelo\HibernateUtil.class
-modelo\Respuesta.class
-modelo\Pregunta.class
-Controlador\PostularPregunta.class
-Controlador\PostularRespuesta.class
-modelo\RespuestaDAO.class
-modelo\Usuario.class
-modelo\PreguntaDAO.class
