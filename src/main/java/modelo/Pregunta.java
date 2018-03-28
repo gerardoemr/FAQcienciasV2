@@ -25,10 +25,12 @@ public class Pregunta  implements java.io.Serializable {
     }
 
 	
-    public Pregunta(Usuario usuario, String titulo, Date fecha, char activa) {
+    public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, char activa) {
         this.usuario = usuario;
         this.titulo = titulo;
+        this.detalles = detalles;
         this.fecha = fecha;
+        this.vistas = 0;
         this.activa = activa;
     }
     public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, char activa, Set respuestas) {

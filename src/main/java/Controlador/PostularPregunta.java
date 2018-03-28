@@ -92,7 +92,7 @@ public class PostularPregunta {
          }
          activa = '1';
          fecha = new Date();
-         Pregunta pregunta = new Pregunta(usuario,titulo,fecha,activa);
+         Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
          if (verifica(pregunta)) {
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
