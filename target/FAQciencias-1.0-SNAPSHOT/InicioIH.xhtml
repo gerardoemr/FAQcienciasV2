@@ -7,9 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core">
 
      <f:view contentType="text/html">
         <h:head>
@@ -24,6 +22,8 @@ and open the template in the editor.
             <br/>Ver Preguntas
             <br/>
             <h:link outcome="VistaPostularPregunta" value="Postular Pregunta" />
+            <br/>
+            <h:link outcome="VistaPostularRespuesta" value="Postular Respuesta" />
             <br/>
             <h:form>
                 <h:commandButton value="logout" action="#{login.logout}" />

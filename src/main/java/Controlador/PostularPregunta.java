@@ -97,7 +97,7 @@ public class PostularPregunta {
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
          }
-         return "/InicioIH?faces-redirect=true";
+         return "/VerificacionDelSistema?faces-redirect=true";
      }
         
      private boolean verifica(Pregunta p) {

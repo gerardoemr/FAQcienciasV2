@@ -21,9 +21,9 @@ public class Pregunta  implements java.io.Serializable {
      private char activa;
      private Set respuestas = new HashSet(0);
 
-    public Pregunta() {
+    public Pregunta(int idpregunta) {
+        this.idpregunta = idpregunta;
     }
-
 	
     public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, char activa) {
         this.usuario = usuario;
