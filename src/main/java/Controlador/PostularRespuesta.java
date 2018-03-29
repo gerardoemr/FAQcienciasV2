@@ -75,12 +75,16 @@ public class PostularRespuesta {
              return "/LoginIH?faces-redirect=true";
          }
          fecha = new Date();
-         pregunta = new Pregunta(1);//solo por propositos de prueba, pero se debe modificar esto.
+         pregunta = new Pregunta(1);//esto solo esta por propositos de prueba, debe se remplazado por el codigo comentado siguiente
+         //pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
+         
          Respuesta respuesta = new Respuesta(pregunta,usuario,titulo,detalles,fecha);
          if (verifica(respuesta)) {
             RespuestaDAO pd = new RespuestaDAO();
             pd.insert(respuesta);
          }
+         
+        //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
          return "/VerificacionDelSistema?faces-redirect=true";
      }
         
