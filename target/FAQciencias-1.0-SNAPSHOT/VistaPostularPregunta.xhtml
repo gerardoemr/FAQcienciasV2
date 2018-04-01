@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
+    
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
@@ -17,16 +17,18 @@
         <h:body>
 
             <h:form>
-                <h:outputText value="Titulo:" />
-                <p:inputText value="#{postularPregunta.titulo}" placeholder="Titulo"/>
-                <br/>
-                <h:outputText value="Detalles" />
-                <p:inputText value="#{postularPregunta.detalles}" placeholder="Detalles"/>
-                <br/>
-                <p:commandButton value=" Aceptar " action="#{postularPregunta.postulaPregunta()}" />
+                <p:panel header="Postular Pregunta" style="margin-bottom:10px;">
+                    <h:outputText value="Titulo:" />
+                    <p:inputText value="#{postularPregunta.titulo}" />
+                    <br/><br/>
+                    <h:outputText value="Detalles" />
+                    <p:textEditor value="#{postularPregunta.detalles}" />
+                    <br/>
+                    <p:commandButton value=" Enviar " action="#{postularPregunta.postulaPregunta()}" />
+                </p:panel>
             </h:form>
-
+            
         </h:body>
-
+        
     </f:view>
 </html>

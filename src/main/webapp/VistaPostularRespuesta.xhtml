@@ -17,15 +17,16 @@
         <h:body>
 
             <h:form>
-                <h:outputText value="Titulo:" />
-                <p:inputText value="#{postularRespuesta.titulo}" placeholder="Titulo"/>
-                <br/>
-                <h:outputText value="Detalles" />
-                <p:inputText value="#{postularRespuesta.detalles}" placeholder="Detalles"/>
-                <br/>
-                <p:commandButton value=" Aceptar " action="#{postularRespuesta.postulaRespuesta()}" />
+                <p:panel header="Postular Pregunta" style="margin-bottom:10px;">
+                    <h:outputText value="Titulo:" />
+                    <p:inputText value="#{postularRespuesta.titulo}" />
+                    <br/><br/>
+                    <h:outputText value="Detalles" />
+                    <p:textEditor value="#{postularRespuesta.detalles}" />
+                    <br/>
+                    <p:commandButton value=" Enviar " action="#{postularRespuesta.postulaRespuesta()}" />
+                </p:panel>
             </h:form>
-
         </h:body>
 
     </f:view>
