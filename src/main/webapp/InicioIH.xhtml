@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
      <f:view contentType="text/html">
         <h:head>
@@ -16,19 +17,25 @@ and open the template in the editor.
         </h:head>
 
         <h:body>
-
-            <h:panelGroup rendered="#{not empty user}">
-            <p>Bienvenido, #{user.nombre}</p>
-            <br/>Ver Preguntas
-            <br/>
-            <h:link outcome="VistaPostularPregunta" value="Postular Pregunta" />
-            <br/>
-            <h:link outcome="VistaPostularRespuesta" value="Postular Respuesta" />
-            <br/>
-            <h:form>
-                <h:commandButton value="logout" action="#{login.logout}" />
+            
+            <h:form>  
+       
+            <p:menubar>
+                <f:facet name="options">
+                    <p:commandButton icon="ui-icon-login" value="Logout" action="#{login.logout}" />
+                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                </f:facet>
+            </p:menubar>
+           
+            
+                <br/>Ver Preguntas
+                <br/>
+                <h:link outcome="VistaPostularPregunta" value="Postular Pregunta" />
+                <br/>
+                <h:link outcome="VistaPostularRespuesta" value="Postular Respuesta" />
+           
+            
             </h:form>
-            </h:panelGroup>
         </h:body>
 
     </f:view>

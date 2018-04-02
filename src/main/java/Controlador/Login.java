@@ -57,6 +57,7 @@ public class Login {
     }
 
     public String logout() {
+        System.out.println("Hola");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";
     }
