@@ -48,7 +48,7 @@ public class FilterSession implements Filter {
         } 
         
         if (session.getAttribute("user") == null) {
-            response.sendRedirect(request.getContextPath() + "/LoginIH.xhtml"); // No logged-in user found, so redirect to login page.
+            response.sendRedirect(request.getContextPath() + "/index.xhtml");// No logged-in user found, so redirect to login page.
         }
         else {
             chain.doFilter(req, res); // Logged-in user found, so just continue request.
