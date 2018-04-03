@@ -87,24 +87,26 @@ public class PostularPregunta {
      
      public String postulaPregunta() {
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-         if(usuario == null) {
-             return "/LoginIH?faces-redirect=true";
-         }
+         
          activa = '1';
          fecha = new Date();
          Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
-         if (verifica(pregunta)) {
+         if (verificaTitulo(titulo)) {
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
          }
-         return "/VerificacionDelSistema?faces-redirect=true";
+         else { 
+             //aqui falta algo
+             return "VistaPostularPregunta";
+         }
+         return "VerificacionDelSistema";
      }
         
     public String regreso() {
         return "InicioIH";
     }
      
-    private boolean verifica(Pregunta p) {
-        return true;
+    private boolean verificaTitulo(String p) {
+        return !(p == null || p.length() < 3);
     }
 }

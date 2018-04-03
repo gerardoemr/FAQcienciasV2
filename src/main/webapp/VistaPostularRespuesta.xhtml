@@ -17,14 +17,18 @@
         <h:body>
 
             <h:form>
-                <p:panel header="Postular Respuesta" style="margin-bottom:10px;">
-                    <h:outputText value="Titulo:" />
-                    <p:inputText value="#{postularRespuesta.titulo}" />
-                    <br/><br/>
-                    <h:outputText value="Detalles" />
-                    <p:textEditor value="#{postularRespuesta.detalles}" />
+                <p:panel id="panel" header="Postular Respuesta">
+                    <p:messages id="msgs" />
+                    <h:outputText value="Titulo: " />
+                    <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
+                        <f:validateLength minimum="3" />
+                    </p:inputText> <p:message for="respuesta" display="icon" />
                     <br/>
-                    <p:commandButton value=" Enviar " action="#{postularRespuesta.postulaRespuesta()}" />
+                    <h:outputText value="Detalles: " />
+                    <br/>
+                    <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
+                    <br/><br/>
+                    <p:commandButton value=" Enviar " update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
                     <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta, false)}"/>
                 </p:panel>
             </h:form>

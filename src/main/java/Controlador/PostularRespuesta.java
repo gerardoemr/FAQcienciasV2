@@ -89,13 +89,16 @@ public class PostularRespuesta {
          fecha = new Date();
          
          Respuesta respuesta = new Respuesta(pregunta,usuario,titulo,detalles,fecha);
-         if (verifica(respuesta)) {
+         if (verificaTitulo(titulo)) {
             RespuestaDAO pd = new RespuestaDAO();
             pd.insert(respuesta);
+         } else{
+             //aqui falta algo
+             return "VistaPostularRespuesta";
          }
          
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
-         return "/VerificacionDelSistema?faces-redirect=true";
+         return "VerificacionDelSistema";
      }
     
     public String regreso() {
@@ -104,7 +107,7 @@ public class PostularRespuesta {
         return "InicioIH";
     }
      
-    private boolean verifica(Respuesta p) {
-        return true;
+    private boolean verificaTitulo(String r) {
+        return !(r == null || r.length() < 3);
     }
 }
