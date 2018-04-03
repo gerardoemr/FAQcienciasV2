@@ -100,7 +100,11 @@ public class PostularPregunta {
          return "/VerificacionDelSistema?faces-redirect=true";
      }
         
-     private boolean verifica(Pregunta p) {
-         return true;
-     }
+    public String regreso() {
+        return "InicioIH";
+    }
+     
+    private boolean verifica(Pregunta p) {
+        return true;
+    }
 }

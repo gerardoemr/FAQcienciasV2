@@ -28,7 +28,11 @@ public class PostularRespuesta {
      private String titulo;
      private String detalles;
      private Date fecha;
-
+    
+    public PostularRespuesta() {
+        pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
+    }
+     
     public int getIdRespuesta() {
         return idRespuesta;
     }
@@ -37,6 +41,14 @@ public class PostularRespuesta {
         this.idRespuesta = idRespuesta;
     }
 
+    public Pregunta getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(Pregunta pregunta) {
+        this.pregunta = pregunta;
+    }
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -75,8 +87,6 @@ public class PostularRespuesta {
              return "/LoginIH?faces-redirect=true";
          }
          fecha = new Date();
-         pregunta = new Pregunta(1);//esto solo esta por propositos de prueba, debe se remplazado por el codigo comentado siguiente
-         //pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
          
          Respuesta respuesta = new Respuesta(pregunta,usuario,titulo,detalles,fecha);
          if (verifica(respuesta)) {
@@ -84,11 +94,17 @@ public class PostularRespuesta {
             pd.insert(respuesta);
          }
          
-        //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
          return "/VerificacionDelSistema?faces-redirect=true";
      }
-        
-     private boolean verifica(Respuesta p) {
-         return true;
-     }
+    
+    public String regreso() {
+        pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
+        return "InicioIH";
+    }
+     
+    private boolean verifica(Respuesta p) {
+        return true;
+    }
 }

@@ -19,18 +19,20 @@ and open the template in the editor.
 
         <h:body>
             <h:form>
-                <h:outputText value="Correo" />
+                <h:outputText value="Iniciar Sesion"/>
+                <br/><br/>
+                <h:outputText value="Correo: " />
                 <h:inputText id="correo" value="#{login.correo}" 
-                           required="true" requiredMessage="Ingrese su correo" /><br/>
+                           required="false" requiredMessage="Ingrese su correo" /><br/>
                 <h:message for="username" errorClass="errorMessage" /> <!-- Message for username -->
 
-                <h:outputText value="Contraseña" />
+                <h:outputText value="Contraseña: " />
                 <h:inputSecret id="contrasena" value="#{login.contrasena}" 
-                           required="true" requiredMessage="Escriba su contraseña" /><br/>
+                           required="false" requiredMessage="Escriba su contraseña" /><br/>
                 <h:message for="password" errorClass="errorMessage" /> <!-- Message for password -->
-
+                <br/>
                 <p:commandButton value="Login" action="#{login.login}" />
-            
+                <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{login.regreso()}"/>
              </h:form>
             <h:messages styleClass="errorMessage" /> <!-- Global messages -->
         </h:body>

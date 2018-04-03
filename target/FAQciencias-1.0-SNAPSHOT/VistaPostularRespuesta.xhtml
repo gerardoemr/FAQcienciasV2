@@ -17,7 +17,7 @@
         <h:body>
 
             <h:form>
-                <p:panel header="Postular Pregunta" style="margin-bottom:10px;">
+                <p:panel header="Postular Respuesta" style="margin-bottom:10px;">
                     <h:outputText value="Titulo:" />
                     <p:inputText value="#{postularRespuesta.titulo}" />
                     <br/><br/>
@@ -25,6 +25,7 @@
                     <p:textEditor value="#{postularRespuesta.detalles}" />
                     <br/>
                     <p:commandButton value=" Enviar " action="#{postularRespuesta.postulaRespuesta()}" />
+                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta, false)}"/>
                 </p:panel>
             </h:form>
         </h:body>

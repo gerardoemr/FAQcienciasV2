@@ -12,19 +12,28 @@
        
             <p:menubar>
                 <f:facet name="options">
+                    <p:commandButton value="Registro" action="#{inicioController.loginIH}" />
                     <p:commandButton icon="ui-icon-login" value="Login" action="#{inicioController.loginIH}" />
                     <p:inputText style="margin-right:10px" placeholder="Search"/>
                 </f:facet>
             </p:menubar>
-           
-            
-                <br/>Ver Preguntas
+                <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                    <p:column>
+                        <p:outputLabel value="#{pregunta.titulo}" />                            
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                    </p:column>
+                    <p:column>
+                            <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta, true)}"/>
+                    </p:column>
+                </p:dataTable>
                 <br/>
-                <h:link outcome="VistaPostularPregunta" value="Postular Pregunta" />
-                <br/>
-                <h:link outcome="VistaPostularRespuesta" value="Postular Respuesta" />
+                <p:commandButton value="Postular Pregunta" action="#{inicioController.postularEnIndex}"/>
            
-            
         </h:form>
     </h:body>
 </html>

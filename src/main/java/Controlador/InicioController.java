@@ -19,4 +19,12 @@ public class InicioController {
     public String loginIH () {
         return "LoginIH?faces-redirect=true";
     }
+    
+    public String postularEnIndex () {
+        return "LoginIH?faces-redirect=true";
+    }
+    
+    public String postular() {
+        return "VistaPostularPregunta";
+    }
 }

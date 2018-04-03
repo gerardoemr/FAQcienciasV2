@@ -27,13 +27,22 @@ and open the template in the editor.
                 </f:facet>
             </p:menubar>
            
-            
-                <br/>Ver Preguntas
-                <br/>
-                <h:link outcome="VistaPostularPregunta" value="Postular Pregunta" />
-                <br/>
-                <h:link outcome="VistaPostularRespuesta" value="Postular Respuesta" />
-           
+                <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                    <p:column>
+                        <p:outputLabel value="#{pregunta.titulo}" />                            
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta, false)}"/>
+                    </p:column>
+            </p:dataTable>
+            <br/>
+            <p:commandButton value="Postular Pregunta" action="#{inicioController.postular}"/>
             
             </h:form>
         </h:body>

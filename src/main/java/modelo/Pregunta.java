@@ -20,7 +20,10 @@ public class Pregunta  implements java.io.Serializable {
      private Integer vistas;
      private char activa;
      private Set respuestas = new HashSet(0);
-
+     
+     
+    public Pregunta() {
+    } 
     public Pregunta(int idpregunta) {
         this.idpregunta = idpregunta;
     }
