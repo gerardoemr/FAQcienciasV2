@@ -90,11 +90,11 @@ public class PostularRespuesta {
          
          Respuesta respuesta = new Respuesta(pregunta,usuario,titulo,detalles,fecha);
          if (verificaTitulo(titulo)) {
+            //Falta una verificacion de los detalles
             RespuestaDAO pd = new RespuestaDAO();
             pd.insert(respuesta);
          } else{
-             //aqui falta algo
-             return "VistaPostularRespuesta";
+            return "VistaPostularRespuesta";
          }
          
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");

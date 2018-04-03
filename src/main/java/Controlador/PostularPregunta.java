@@ -92,12 +92,12 @@ public class PostularPregunta {
          fecha = new Date();
          Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
          if (verificaTitulo(titulo)) {
+            //Falta una verificacion de los detalles
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
          }
-         else { 
-             //aqui falta algo
-             return "VistaPostularPregunta";
+         else {
+            return "VistaPostularPregunta";
          }
          return "VerificacionDelSistema";
      }
