@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -48,7 +49,7 @@ public class Login {
         } else if(u.getContrasena().equals(this.contrasena)){
             context.getExternalContext().getSessionMap().put("user", u);
             
-            return "InicioIH?faces-redirect=true";
+            return "/user/InicioIH?faces-redirect=true";
         } else {
             context.addMessage(null, new FacesMessage("Contraseña incorrecta"));
             correo = null;
@@ -57,8 +58,9 @@ public class Login {
         }
     }
 
-    public String logout() {
+    public String logout() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index?faces-redirect=true";
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        return "index.xhtml";
     }
 }
