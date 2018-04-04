@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <link rel="icon" type="image/png" href="favicon.ico" />
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Agregar Usuarios</title>
+            </f:facet>  
+        </h:head>
+
+        <h:body>
+            <h:form>               
+     
+                <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
+                <br/><br/>
+                <h:outputText value="Nombre:" />
+                <br/>
+                <h:inputText value="#{registrar.nombre}" />
+                <br/>
+                <h:outputText value="Fecha de nacimiento:" />
+                <br/>
+                <p:calendar value="#{registrar.fechanac}" />
+                <br/>
+                <h:outputText value =" Correo:"/>
+                <br/>
+                <h:inputText id="Correo" value="#{registrar.correo}"
+                             validatorMessage="#{registrar.correo} no es valido">
+                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </h:inputText>
+                <p:message for="Correo:" />            
+                <h:outputText value="Contrasena:" />
+                <br/>
+                <h:inputSecret value="#{registrar.contrasena}"/>
+                <br/><br/>
+                <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
+                <p:commandButton value=" Regresar " action="index" />
+            </h:form>
+                
+        </h:body>
+
+    </f:view>
+    
+</html>
