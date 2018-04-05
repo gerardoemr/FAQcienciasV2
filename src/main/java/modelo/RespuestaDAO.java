@@ -69,4 +69,35 @@ public class RespuestaDAO {
         }
         return result;
     }
+    
+    public List<Respuesta> buscar(String busqueda){
+        List<Respuesta> result = null;
+        // arbrimos la sesion son sessionFactory 
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            //iniciamos la transaccion, la consulta a realizar
+            tx = session.beginTransaction();
+            //Escribimos la consulta en HQL
+            String hql = "from Respuesta as r"+
+                    " where r.titulo like '%"+ busqueda +"%'";
+                    //; union\n" +
+                    //"from Respuesta as r" +
+                    //"where r.detalles like '%"+ busqueda +"%'";
+            Query query = session.createQuery(hql);
+            result = (List<Respuesta>)query.list();
+            tx.commit();
+        }
+        catch (Exception e) {
+            //si hay un problema regresamos la base aun estado antes de la consulta
+            if (tx!=null){
+                tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+            //cerramos la session
+            session.close();
+        }
+        return result;
+    }
 }

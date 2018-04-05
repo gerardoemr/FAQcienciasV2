@@ -14,7 +14,8 @@
                 <f:facet name="options">
                     <p:commandButton value="Registro" action= "VistaRegistrarse" />
                     <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
-                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton value="Buscar" action="#{buscarEntrada.init(true)}" />
                 </f:facet>
             </p:menubar>
                 <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"

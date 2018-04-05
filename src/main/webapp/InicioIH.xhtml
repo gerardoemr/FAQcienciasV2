@@ -23,7 +23,8 @@ and open the template in the editor.
             <p:menubar>
                 <f:facet name="options">
                     <p:commandButton icon="ui-icon-login" value="Logout" action="#{login.logout}" />
-                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton value="Buscar" action="#{buscarEntrada.init(false)}" />
                 </f:facet>
             </p:menubar>
            

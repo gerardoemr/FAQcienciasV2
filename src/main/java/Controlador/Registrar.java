@@ -72,13 +72,7 @@ public class Registrar {
     
     public String agregaUsuario(){
         rol='0';
-        Usuario u = new Usuario();
-        u.setIdusuario(idusuario);        
-        u.setNombre(nombre);
-        u.setFechanac(fechanac);
-        u.setCorreo(correo);
-        u.setRol(rol);
-        u.setContrasena(contrasena);
+        Usuario u = new Usuario(nombre,fechanac,correo,rol,contrasena);     
         UsuarioDAO ud = new UsuarioDAO();
         ud.agrega(u);
         return "InicioIH";
