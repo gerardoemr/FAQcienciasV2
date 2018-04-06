@@ -29,17 +29,21 @@
                            <p:column>
                                <p:outputLabel value="#{pregunta.titulo}" />                            
                            </p:column>
+                        
                            <p:column>
                                <p:outputLabel value="#{pregunta.detalles}"/>                                     
                            </p:column>
-                           <h:form>
-                                <p:column>
-                                   <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
-                                </p:column>
-                            </h:form>
-                       </p:dataTable>
-                       <br/>
-                    <p:commandButton value="Postular Pregunta" action="LoginIH"/>
+
+                           <p:column>
+                                <h:form>
+                                    <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                                </h:form>
+                           </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <h:form>
+                        <p:commandButton value="Postular Pregunta" action="LoginIH"/>
+                    </h:form>
                 </div>
                 <div class="ui-g-2">SideBar</div>
                 <div class="ui-g-2">Empty</div>
