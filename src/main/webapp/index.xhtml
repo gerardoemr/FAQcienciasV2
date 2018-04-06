@@ -18,24 +18,33 @@
                     <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
                 </f:facet>
             </p:menubar>
-                <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                    <p:column>
-                        <p:outputLabel value="#{pregunta.titulo}" />                            
-                    </p:column>
-                    <p:column>
-                        <p:outputLabel value="#{pregunta.detalles}"/>                                     
-                    </p:column>
-                    <p:column>
-                            <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
-                    </p:column>
-                </p:dataTable>
-                <br/>
-                <p:commandButton value="Postular Pregunta" action="LoginIH"/>
-           
         </h:form>
+            <div class="ui-g">
+                <div class="ui-g-2">Empty</div>
+                <div class="ui-g-6">
+                    <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
+                                paginator="true"
+                                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="5,10,15">
+                           <p:column>
+                               <p:outputLabel value="#{pregunta.titulo}" />                            
+                           </p:column>
+                           <p:column>
+                               <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                           </p:column>
+                           <h:form>
+                                <p:column>
+                                   <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                                </p:column>
+                            </h:form>
+                       </p:dataTable>
+                       <br/>
+                    <p:commandButton value="Postular Pregunta" action="LoginIH"/>
+                </div>
+                <div class="ui-g-2">SideBar</div>
+                <div class="ui-g-2">Empty</div>
+
+            </div>
     </h:body>
 </html>
 
