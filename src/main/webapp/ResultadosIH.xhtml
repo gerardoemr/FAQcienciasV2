@@ -17,7 +17,7 @@
                     <p:commandButton value="Registro" action= "VistaRegistrarse" />
                     <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
                     <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                    <p:commandButton value="Buscar" action="#{buscarEntrada.init(true)}" />
+                    <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
                 </f:facet>
             </p:menubar>
             <p:dataTable value="#{buscarEntrada.preguntasResult}" var="pregunta" rows="5"
@@ -31,7 +31,7 @@
                         <p:outputLabel value="#{pregunta.detalles}"/>                                     
                     </p:column>
                     <p:column>
-                        <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta,true)}"/>
+                        <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
                     </p:column>
             </p:dataTable>                
         </h:form>

@@ -26,10 +26,9 @@ import modelo.RespuestaDAO;
  * @author Cal
  */
 public class BuscarEntrada implements Serializable {
-    
     private List<Pregunta> preguntasResult;
      
-    private List<Respuesta> respuestasResult;
+    private List<Pregunta> respuestasResult;
     
     private Pregunta selectedPregunta;
     
@@ -54,17 +53,22 @@ public class BuscarEntrada implements Serializable {
     
     /**
      * peticion que guarda un proyecto 
-     * @param inIndex
      * @return 
      */
-    public String init(boolean inIndex){
+    public String init(){
         pdao = new PreguntaDAO();
         rdao = new RespuestaDAO();
         preguntasResult = pdao.buscar(busqueda);
         respuestasResult = rdao.buscar(busqueda);
-        if (inIndex)
-            return "ResultadosIH";
-        return "ResultadosIH2";
+    
+        for (Pregunta p : respuestasResult){
+            if (!preguntasResult.contains(p)){
+                preguntasResult.add(p);
+            }
+        }
+        if (Login.login)
+            return "ResultadosIH2";
+        return "ResultadosIH";
     }
 
     public List<Pregunta> getPreguntasResult() {
@@ -75,11 +79,11 @@ public class BuscarEntrada implements Serializable {
         this.preguntasResult = preguntasResult;
     }
 
-    public List<Respuesta> getRespuestasResult() {
+    public List<Pregunta> getRespuestasResult() {
         return respuestasResult;
     }
 
-    public void setRespuestasResult(List<Respuesta> respuestasResult) {
+    public void setRespuestasResult(List<Pregunta> respuestasResult) {
         this.respuestasResult = respuestasResult;
     }
     

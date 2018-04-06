@@ -24,7 +24,7 @@ and open the template in the editor.
                 <f:facet name="options">
                     <p:commandButton icon="ui-icon-login" value="Logout" action="#{login.logout}" />
                     <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                    <p:commandButton value="Buscar" action="#{buscarEntrada.init(false)}" />
+                    <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
                 </f:facet>
             </p:menubar>
            
@@ -39,7 +39,7 @@ and open the template in the editor.
                         <p:outputLabel value="#{pregunta.detalles}"/>                                     
                     </p:column>
                     <p:column>
-                        <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta, false)}"/>
+                        <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
                     </p:column>
             </p:dataTable>
             <br/>

@@ -7,6 +7,7 @@ package Controlador;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 
@@ -75,6 +76,7 @@ public class Registrar {
         Usuario u = new Usuario(nombre,fechanac,correo,rol,contrasena);     
         UsuarioDAO ud = new UsuarioDAO();
         ud.agrega(u);
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);
         return "InicioIH";
     }
 }

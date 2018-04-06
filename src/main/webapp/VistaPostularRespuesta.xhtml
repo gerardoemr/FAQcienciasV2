@@ -29,7 +29,7 @@
                     <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
                     <br/><br/>
                     <p:commandButton value=" Enviar " update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
-                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta, false)}"/>
+                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}"/>
                 </p:panel>
             </h:form>
         </h:body>

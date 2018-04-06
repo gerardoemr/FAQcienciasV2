@@ -78,10 +78,8 @@ public class PreguntaDAO {
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
             String hql = "from Pregunta as p"+
-                    " where p.titulo like '%"+ busqueda +"%'";
-                    //+ " union\n" +
-                    //"from pregunta as p" +
-                    //"where p.detalles like '%"+ busqueda +"%'";
+                    " where p.titulo like '%"+ busqueda +"%'" +
+                    "or p.detalles like '%"+ busqueda +"%'";
             Query query = session.createQuery(hql);
             result = (List<Pregunta>)query.list();
             tx.commit();

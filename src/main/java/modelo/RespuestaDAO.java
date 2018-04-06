@@ -70,8 +70,8 @@ public class RespuestaDAO {
         return result;
     }
     
-    public List<Respuesta> buscar(String busqueda){
-        List<Respuesta> result = null;
+    public List<Pregunta> buscar(String busqueda){
+        List<Pregunta> result = null;
         // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -79,13 +79,13 @@ public class RespuestaDAO {
             //iniciamos la transaccion, la consulta a realizar
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
-            String hql = "from Respuesta as r"+
-                    " where r.titulo like '%"+ busqueda +"%'";
-                    //; union\n" +
-                    //"from Respuesta as r" +
-                    //"where r.detalles like '%"+ busqueda +"%'";
+            String hql = "select p from Pregunta as p"
+                    + " where p.idpregunta in ( "
+                    + " select r.pregunta.idpregunta from Respuesta as  r"
+                    + " where r.titulo like '%"+ busqueda +"%'"
+                    + " or r.detalles like '%"+ busqueda +"%')";
             Query query = session.createQuery(hql);
-            result = (List<Respuesta>)query.list();
+            result = (List<Pregunta>)query.list();
             tx.commit();
         }
         catch (Exception e) {

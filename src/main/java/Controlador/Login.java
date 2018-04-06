@@ -17,7 +17,8 @@ public class Login {
     
     private String correo;
     private String contrasena;
-
+    public static boolean login = false;
+    
     public String getCorreo() {
         return correo;
     }
@@ -35,6 +36,7 @@ public class Login {
     }
     
     public String login() {
+        Login.login = true;
         UsuarioDAO dao = new UsuarioDAO();
         Usuario u = dao.busca(correo);
         FacesContext context = FacesContext.getCurrentInstance();
@@ -57,6 +59,7 @@ public class Login {
     }
 
     public String logout() {
+        Login.login = false;
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";
     }

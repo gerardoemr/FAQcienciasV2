@@ -21,16 +21,14 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class VerRespuesta {
     private List<Respuesta> respuestas;
-    private Pregunta pregunta; 
-    private static boolean inIndex;
+    private Pregunta pregunta;
 
     public List<Respuesta> getRespuestas() {
         return respuestas;
     }
     
-    public String listarRespuestas(Pregunta p, boolean inIndex){
+    public String listarRespuestas(Pregunta p){
     this.pregunta=p;
-    VerRespuesta.inIndex = inIndex;
     FacesContext context = FacesContext.getCurrentInstance();
      context.getExternalContext().getSessionMap().put("pregunta", p);
     RespuestaDAO lib = new RespuestaDAO();
@@ -39,15 +37,15 @@ public class VerRespuesta {
     }
     
     public String postular() {
-        if(inIndex)
-            return "LoginIH";
-        return "VistaPostularRespuesta";
+        if(Login.login)
+            return "VistaPostularRespuesta";
+        return "LoginIH";
     }
     
     public String regreso() {
-        if (inIndex)
-            return "index";
-        return "InicioIH";
+        if (Login.login)
+            return "InicioIH";
+        return "index";
     }
 
 }
