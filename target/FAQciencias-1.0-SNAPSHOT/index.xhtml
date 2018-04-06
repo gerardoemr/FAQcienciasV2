@@ -12,11 +12,36 @@
         <h:form>
             <p:menubar>
                     <f:facet name="options">
-                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH"/>
-                        <p:inputText style="margin-right:10px" placeholder="Buscar"/>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                        <p:commandButton value="Buscar" action="LoginIH" />
+                        <p:inputText style="margin-right:10px" value="Buscar" placeholder="" />
                     </f:facet>
             </p:menubar>
-        </h:form>    
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-1"></div>
+            <div class="ui-g-8">
+                <p:dataTable var="car" value="coches">
+                    <p:column headerText="Id">
+                        <h:outputText value="cohes" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="año" />
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <h:outputText value="modelo" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="color" />
+                    </p:column>
+                </p:dataTable></div>
+            <div class="ui-g-2">login</div>
+            <div class="ui-g-1"></div>
+        </div>
     </h:body>
 </html>
 

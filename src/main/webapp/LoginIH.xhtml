@@ -33,10 +33,10 @@ and open the template in the editor.
             <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="correo" value="Correo:" />
-                    <p:inputText id="correo" value="#{login.correo}" required="true" label="correo" />
+                    <p:inputText id="correo" value="#{login.correo}" label="correo" />
 
                     <h:outputLabel for="contrasena" value="Contraseña:" />
-                    <p:password id="contrasena" value="#{login.contrasena}" required="true" label="contrasena" />
+                    <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
 
                     <f:facet name="footer">
                         <p:commandButton value="Login" update="growl" action="#{login.login}"

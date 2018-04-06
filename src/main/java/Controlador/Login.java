@@ -46,16 +46,14 @@ public class Login implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         boolean loggedIn;
          
-        if(u == null){
-            loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN,"Error","Correo no registrado");
-        }else if(contrasena.equals(u.getContrasena())) {
+        
+        if(u != null && contrasena.equals(u.getContrasena())) {
             loggedIn = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());
             context.getExternalContext().getSessionMap().put("user", u);
         } else {
             loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Contraseña incorrecta");
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Credenciales inválidas");
         }
          
         FacesContext.getCurrentInstance().addMessage(null, message);
