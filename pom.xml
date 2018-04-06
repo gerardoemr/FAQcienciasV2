@@ -36,6 +36,11 @@
             <version>6.2.2</version>
         </dependency>
         <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>dot-luv</artifactId>
+            <version>1.0.10</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>

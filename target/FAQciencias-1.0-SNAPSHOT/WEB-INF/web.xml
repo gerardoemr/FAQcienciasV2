@@ -21,4 +21,17 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>dot-luv</param-value>
+    </context-param>
+    <security-constraint>
+        <web-resource-collection>
+          <web-resource-name>Public</web-resource-name>
+          <url-pattern>*.css</url-pattern>
+          <url-pattern>*.jpg</url-pattern>
+          <url-pattern>*.gif</url-pattern>
+          <url-pattern>/javax.faces.resource/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
 </web-app>
