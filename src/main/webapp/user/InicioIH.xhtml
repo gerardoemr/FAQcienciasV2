@@ -16,19 +16,19 @@ and open the template in the editor.
             <title>Inicio</title>
             <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
         </h:head>
-
+ 
         <h:body>
-
-            <h:panelGroup rendered="#{not empty user}">
-            <p>Bienvenido, #{user.nombre}</p>
-            <br/>Ver Preguntas
-            <br/>Crear nueva pregunta
-            <br/>
             <h:form>
-                <h:commandButton value="logout" action="#{login.logout}" />
-            </h:form>
-            </h:panelGroup>
+                <p:menubar>
+                        <f:facet name="options">
+                            <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}"/>
+                            <p:inputText style="margin-right:10px" placeholder="Buscar"/>
+                        </f:facet>
+                </p:menubar>
+                <h:panelGroup rendered="#{not empty user}">
+                    <p>Bienvenido, #{user.nombre}</p>
+                </h:panelGroup>>
+            </h:form>    
         </h:body>
-
     </f:view>
 </html>

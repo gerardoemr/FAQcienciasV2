@@ -1,22 +1,47 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>FAQciencias</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
-        Bienvenido a FAQciencias
-        <br />
-        <br />
-        <h:link outcome="verUsuario" value="Ver Usuarios" />
-        <br />
-        <br />
-        <h:link outcome="VistaAgregarUsuario" value="Agregar Usuarios" />
-        <br />
-        <br />
-        <h:link outcome="LoginIH" value="Login" />
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                        <p:commandButton value="Buscar" action="LoginIH" />
+                        <p:inputText style="margin-right:10px" value="Buscar" placeholder="" />
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-1"></div>
+            <div class="ui-g-8">
+                <p:dataTable var="car" value="coches">
+                    <p:column headerText="Id">
+                        <h:outputText value="cohes" />
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <h:outputText value="año" />
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <h:outputText value="modelo" />
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <h:outputText value="color" />
+                    </p:column>
+                </p:dataTable></div>
+            <div class="ui-g-2">login</div>
+            <div class="ui-g-1"></div>
+        </div>
     </h:body>
 </html>
 

@@ -8,31 +8,44 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-     <f:view contentType="text/html">
-        <h:head>
-            <title>Inciar Sesión</title>
-            <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
-        </h:head>
+<h:head>
+        <title>Inciar Sesión</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if(args.validationFailed || !args.loggedIn) {
+                    PF('dlg').jq.effect("shake", {times:5}, 100);
+                }
+                else {
+                    PF('dlg').hide();
+                    $('#loginLink').fadeOut();
+                }
+            }
+        </script>
+</h:head>
 
-        <h:body>
-            <h:form>
-                <h:outputText value="Correo" />
-                <h:inputText id="correo" value="#{login.correo}" 
-                           required="true" requiredMessage="Ingrese su correo" /><br/>
-                <h:message for="username" errorClass="errorMessage" /> <!-- Message for username -->
+<h:body>
+        <h:form>            
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+   
+            <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="correo" value="Correo:" />
+                    <p:inputText id="correo" value="#{login.correo}" label="correo" />
 
-                <h:outputText value="Contraseña" />
-                <h:inputSecret id="contrasena" value="#{login.contrasena}" 
-                           required="true" requiredMessage="Escriba su contraseña" /><br/>
-                <h:message for="password" errorClass="errorMessage" /> <!-- Message for password -->
+                    <h:outputLabel for="contrasena" value="Contraseña:" />
+                    <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
 
-                <h:commandButton value="Login" action="#{login.login()}" />
-            
-             </h:form>
-            <h:messages styleClass="errorMessage" /> <!-- Global messages -->
-        </h:body>
-    </f:view>
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" update="growl" action="#{login.login}"
+                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                    </f:facet>  
+                </h:panelGrid>
+            </p:panel>    
+        </h:form>
+</h:body>   
 </html>
+
+
