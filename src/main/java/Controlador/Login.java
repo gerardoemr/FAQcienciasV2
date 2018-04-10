@@ -13,11 +13,6 @@ import modelo.UsuarioDAO;
 import org.primefaces.PrimeFaces;
 
 /**
- *
- * @author gerardo
- */
-
-/**
  * Login.java:
  * 
  *  Controlador para el caso de uso  
