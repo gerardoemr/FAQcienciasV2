@@ -9,7 +9,7 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Respuestas</title>
+                <title>respuestas</title>
             </f:facet>
         </h:head>
 
@@ -22,11 +22,9 @@
                     <p:column headerText="RESPUESTAS">
                         <p:outputLabel value="#{respuesta.detalles}"/>
                     </p:column>        
-                </p:dataTable>
-                <br/>
-                <p:commandButton value="Postular Respuesta" action="#{verRespuesta.postular()}"/>
-                <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.regreso()}"/>
+                </p:dataTable>              
             </h:form>
         </h:body>
     </f:view>
 </html>
+
