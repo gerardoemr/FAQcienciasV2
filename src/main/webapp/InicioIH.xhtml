@@ -17,6 +17,7 @@ and open the template in the editor.
         </h:head>
 
         <h:body>
+<<<<<<< HEAD
             
             <h:form>  
        
@@ -55,6 +56,18 @@ and open the template in the editor.
                </div>
                <div class="ui-g-2">SideBar</div>
                <div class="ui-g-2">Empty</div>
+=======
+
+            <h:panelGroup rendered="#{not empty user}">
+            <p>Bienvenido, #{user.nombre}</p>
+            <br/>Ver Preguntas
+            <br/>Crear nueva pregunta
+            <br/>
+            <h:form>
+                <h:commandButton value="logout" action="#{login.logout}" />
+            </h:form>
+            </h:panelGroup>
+>>>>>>> upstream/master
         </h:body>
 
     </f:view>

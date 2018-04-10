@@ -42,7 +42,7 @@ public class Login {
         FacesContext context = FacesContext.getCurrentInstance();
 
         if (u == null) {
-            context.addMessage(null, new FacesMessage("El correo que ingres√≥ no est√° registrado, intente de nuevo"));
+            context.addMessage(null, new FacesMessage("El correo que ingresÛ no est· registrado, intente de nuevo"));
             correo = null;
             contrasena = null;
             return null;
@@ -51,7 +51,7 @@ public class Login {
             
             return "InicioIH?faces-redirect=true";
         } else {
-            context.addMessage(null, new FacesMessage("Contrase√±a incorrecta"));
+            context.addMessage(null, new FacesMessage("ContraseÒa incorrecta"));
             correo = null;
             contrasena = null;
             return null; 
