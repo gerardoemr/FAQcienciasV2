@@ -85,12 +85,7 @@ public class PostularPregunta {
         this.activa = activa;
     }
      
-    /**
-     * Metodo que permite la interaccion entre la vista 
-     * "VistaPostularPregunta" y el modelo "Pregunta".
-     * @return el direccionanmiento de la vista.
-     */
-    public String postulaPregunta() {
+     public String postulaPregunta() {
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
          
          activa = '1';
@@ -107,10 +102,6 @@ public class PostularPregunta {
          return "VerificacionDelSistema";
      }
         
-    /**
-     * Metodo que nos regresa a la paguina de inicio 
-     * @return la direccion de la paguina de inicio
-     */
     public String regreso() {
         return "InicioIH";
     }

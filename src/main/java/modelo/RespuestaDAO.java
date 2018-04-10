@@ -22,10 +22,6 @@ public class RespuestaDAO {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
-    /**
-     * Inserta una nueva resuesta a la base de datos.
-     * @param p - la respuesta a insertar.
-     */
     public void insert(Respuesta p){
         Session session = sessionFactory.openSession();
         Transaction tx = null;

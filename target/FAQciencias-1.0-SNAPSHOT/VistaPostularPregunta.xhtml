@@ -5,34 +5,36 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
+    
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Postular Respuesta</title>
+                <title>Postular Pregunta</title>
             </f:facet>
         </h:head>
 
         <h:body>
 
             <h:form>
-                <p:panel id="panel" header="Postular Respuesta">
+                <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
+                <p:panel id="panel" header="Postular Pregunta">
                     <p:messages id="msgs" />
-                    <h:outputText value="Titulo: " />
-                    <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
+                    <h:outputText value="Pregunta: " />
+                    <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta">
                         <f:validateLength minimum="3" />
-                    </p:inputText> <p:message for="respuesta" display="icon" />
+                    </p:inputText> <p:message for="pregunta" display="icon" />
                     <br/>
                     <h:outputText value="Detalles: " />
                     <br/>
-                    <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
+                    <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true" style="width: 500px"/>
                     <br/><br/>
-                    <p:commandButton value=" Enviar " update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
-                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}"/>
+                    <p:commandButton value=" Enviar " update="panel" action="#{postularPregunta.postulaPregunta()}" />
+                    <p:commandButton value="Regresar" action="#{postularPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
                 </p:panel>
             </h:form>
+            
         </h:body>
-
+        
     </f:view>
 </html>
