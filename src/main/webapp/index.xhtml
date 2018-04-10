@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -79,3 +80,50 @@
 </html>
 
 >>>>>>> upstream/master
+=======
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Home</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                            <p:commandButton value="Buscar" action="LoginIH" />
+                        <p:inputText style="margin-right:10px" value="Buscar" placeholder="" />
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-1"></div>
+            <div class="ui-g-8">
+               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.titulo}" />                            
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                        </p:column>
+                </p:dataTable>    
+            </div>
+        </div>
+
+        
+    </h:body>
+</html>
+
+>>>>>>> f84c65066bc2a9926f7fdeae62dae8ed8c76d3ff
