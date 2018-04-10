@@ -17,7 +17,6 @@ import org.primefaces.PrimeFaces;
  * @author gerardo
  */
 
-
 /**
  * Login.java:
  * 
@@ -52,48 +51,64 @@ public class Login implements Serializable{
     
     /**
      * Setter del atributo correo.
-     * @param correo cadena que se guarda como correo. 
+     * @param correo cadena correo. 
      */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    
+    /**
+     * Getter del atributo contrasena.
+     * @return cadena contrasena
+     */
     public String getContrasena() {
         return contrasena;
     }
 
+    /**
+     * Setter del atributo contrasena.
+     * @param contrasena 
+     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
     
+    /**
+     * Método principal para iniciar sesión
+     * @return cadena que redirige al usuario a la vista InicioIH si la autenticación fue exitosa.
+     * @throws IOException 
+     */
     public String login() throws IOException {
-        UsuarioDAO dao = new UsuarioDAO();
-        Usuario u = dao.busca(correo);
-        FacesMessage message;
+        UsuarioDAO dao = new UsuarioDAO(); 
+        Usuario u = dao.busca(correo);//en esta línea se busca se verifica si el correo es de un usuario registrado.
+        FacesMessage message; //se crea este mensaje para mandar alertas en la vista.
         FacesContext context = FacesContext.getCurrentInstance();
-        boolean loggedIn;
+        boolean loggedIn;//bandera para determinar si el inicio de sesión fue exitoso.
          
         
-        if(u != null && contrasena.equals(u.getContrasena())) {
+        if(u != null && contrasena.equals(u.getContrasena())) { //credenciales válidas
             loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());
-            context.getExternalContext().getSessionMap().put("user", u);
-        } else {
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());//mensaje de bienvenida
+            context.getExternalContext().getSessionMap().put("user", u);//se agrega la información del usuario al contexto.
+        } else {//credenciales inválidas
             loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Credenciales inválidas");
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Credenciales inválidas");//mensaje de error
         }
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-        String s =  (loggedIn) ? "/user/InicioIH?faces-redirect=true": null;
-        System.out.println(s);
+        String s =  (loggedIn) ? "/user/InicioIH?faces-redirect=true": null; //cadena que redirige al usuario a InicioIH si el inicio de sesión fue exitoso.
         return s;
     }
     
+    /**
+     * Método para cerrar sesión.
+     * @return cadena que redirige al usuario a la página principal.
+     * @throws IOException 
+     */
     public String logout() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();//cierra la sesión
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        return "index.xhtml";
+        return "index.xhtml";//se redirige al usuario a la página principal (index.xhtml)
     }
 }

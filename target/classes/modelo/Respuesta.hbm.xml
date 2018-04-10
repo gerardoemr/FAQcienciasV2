@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Respuesta" table="respuesta" schema="public" optimistic-lock="version">
+        <id name="idrespuesta" type="int">
+            <column name="idrespuesta" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pregunta" class="modelo.Pregunta" fetch="select">
+            <column name="idpregunta" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="modelo.Usuario" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" not-null="true" />
+        </property>
+        <property name="detalles" type="string">
+            <column name="detalles" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
