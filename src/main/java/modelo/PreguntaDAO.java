@@ -22,6 +22,10 @@ public class PreguntaDAO {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
+    /**
+     *Mete una pregunta nueva a la base de datos
+     * @param p - la pregunta a insertar
+     */
     public void insert(Pregunta p){
         Session session = sessionFactory.openSession();
         Transaction tx = null;

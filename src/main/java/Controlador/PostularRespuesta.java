@@ -81,7 +81,12 @@ public class PostularRespuesta {
         this.fecha = fecha;
     }
      
-     public String postulaRespuesta() {
+    /**
+     * Permite la interaccion entre la vista
+     * "VistaPostularRespuesta" y el modelo "Respuesta".
+     * @return - el direccionamiento de la vista.
+     */
+    public String postulaRespuesta() {
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
          if(usuario == null) {
              return "/LoginIH?faces-redirect=true";
