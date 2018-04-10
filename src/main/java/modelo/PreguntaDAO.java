@@ -4,45 +4,24 @@
  * and open the template in the editor.
  */
 package modelo;
-
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
 /**
  *
- * @author Oxium
+ * @author daniel
  */
 public class PreguntaDAO {
     private SessionFactory sessionFactory;
     
-    public PreguntaDAO () {
+    
+public PreguntaDAO(){
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
-    
-    public void insert(Pregunta p){
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-        try {
-           tx = session.beginTransaction();
-         
-           session.persist(p);
-           
-           tx.commit();
-        }
-        catch (Exception e) {
-           if (tx!=null){ 
-               tx.rollback();
-           }
-           e.printStackTrace(); 
-        }finally {
-           session.close();
-        }
-    }
 
-    public List<Pregunta> preguntas() {
+public List<Pregunta> preguntas() {
         List<Pregunta> result = null;
         // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
