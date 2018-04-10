@@ -21,15 +21,13 @@ public class Respuesta  implements java.io.Serializable {
     }
 
 	
-    public Respuesta(int idrespuesta, Pregunta pregunta, Usuario usuario, String titulo, Date fecha) {
-        this.idrespuesta = idrespuesta;
+    public Respuesta(Pregunta pregunta, Usuario usuario, String titulo, Date fecha) {
         this.pregunta = pregunta;
         this.usuario = usuario;
         this.titulo = titulo;
         this.fecha = fecha;
     }
-    public Respuesta(int idrespuesta, Pregunta pregunta, Usuario usuario, String titulo, String detalles, Date fecha) {
-       this.idrespuesta = idrespuesta;
+    public Respuesta(Pregunta pregunta, Usuario usuario, String titulo, String detalles, Date fecha) {
        this.pregunta = pregunta;
        this.usuario = usuario;
        this.titulo = titulo;
