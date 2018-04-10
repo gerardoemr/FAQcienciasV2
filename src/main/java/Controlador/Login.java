@@ -91,33 +91,6 @@ public class Login implements Serializable{
         return s;
     }
     
-/*
-    public String login() {
-        UsuarioDAO dao = new UsuarioDAO();
-        Usuario u = dao.busca(correo);
-        FacesContext context = FacesContext.getCurrentInstance();
-        FacesMessage message = null;
-        boolean loggedIn = false;
-
-        if (u == null) {
-            context.addMessage(null, new FacesMessage("El correo que ingresó no está registrado, intente de nuevo"));
-            correo = null;
-            contrasena = null;
-            loggedIn = false;
-        } else if(u.getContrasena().equals(this.contrasena)){
-            context.getExternalContext().getSessionMap().put("user", u);
-            loggedIn = true;
-        } else {
-            context.addMessage(null, new FacesMessage("Contraseña incorrecta"));
-            correo = null;
-            contrasena = null;
-            loggedIn = false;
-        }
-        
-        String s =  (loggedIn) ? "/user/InicioIH?faces-redirect=true": null;
-        return s;
-    }
-*/
     public String logout() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");

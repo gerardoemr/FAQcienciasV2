@@ -6,16 +6,20 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Home</title>
+        <title>Principal</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
-        <h:form>
+       <h:form>
             <p:menubar>
                     <f:facet name="options">
-                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
-                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
-                            <p:commandButton value="Buscar" action="LoginIH" />
-                        <p:inputText style="margin-right:10px" value="Buscar" placeholder="" />
+                        <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" style="vertical-align: middle" />
+                        <p:commandButton value="Buscar" action="LoginIH" style="vertical-align: middle"/>
+                        <p:inputText style="margin-right:10px;vertical-align: middle" value="Buscar" placeholder=""/>
                     </f:facet>
             </p:menubar>
         </h:form>
