@@ -16,21 +16,49 @@ import org.primefaces.PrimeFaces;
  *
  * @author gerardo
  */
+
+
+/**
+ * Login.java:
+ * 
+ *  Controlador para el caso de uso  
+ * 
+ * @author gerardo
+ * @version 1.0, 10/04/2018
+ * @see documento "Especificación de Diseño de Software"
+ * @since jdk 7.0 
+ */
 @ManagedBean
 @SessionScoped
 public class Login implements Serializable{
     
+    /**
+     * Cadena que almacena el correo de la sesión actual.
+     */
     private String correo;
+    
+    /**
+     * Cadena para validar con la contraseña registrada.
+     */
     private String contrasena;
 
+    /**
+     * Getter del atributo correo
+     * @return cadena del correo 
+     */
     public String getCorreo() {
         return correo;
     }
-
+    
+    /**
+     * Setter del atributo correo.
+     * @param correo cadena que se guarda como correo. 
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    
     public String getContrasena() {
         return contrasena;
     }
