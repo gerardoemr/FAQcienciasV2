@@ -7,40 +7,49 @@
 
     <f:view contentType="text/html">
         <h:head>
-            <link rel="icon" type="image/png" href="favicon.ico" />
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Agregar Usuarios</title>
-            </f:facet>  
-        </h:head>
+        <title>Resultados de la busqueda</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    
+    <h:body>
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" style="vertical-align: middle" />
+                        <p:commandButton value="Buscar" action="index" style="vertical-align: middle"/>
+                        <p:inputText style="margin-right:10px;vertical-align: middle" placeholder=""/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <h:form>               
 
-        <h:body>
-            <h:form>               
-     
-                <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
-                <br/><br/>
-                <h:outputText value="Nombre:" />
-                <br/>
-                <h:inputText value="#{registrar.nombre}" />
-                <br/>
-                <h:outputText value="Fecha de nacimiento:" />
-                <br/>
-                <p:calendar value="#{registrar.fechanac}" />
-                <br/>
-                <h:outputText value =" Correo:"/>
-                <br/>
-                <h:inputText id="Correo" value="#{registrar.correo}"
-                             validatorMessage="#{registrar.correo} no es valido">
-                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                </h:inputText>
-                <p:message for="Correo:" />            
-                <h:outputText value="Contrasena:" />
-                <br/>
-                <h:inputSecret value="#{registrar.contrasena}"/>
-                <br/><br/>
-                <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
-                <p:commandButton value=" Regresar " action="index" />
-            </h:form>
+            <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
+            <br/><br/>
+            <h:outputText value="Nombre:" />
+            <br/>
+            <h:inputText value="#{registrar.nombre}" />
+            <br/>
+            <h:outputText value="Fecha de nacimiento:" />
+            <br/>
+            <p:calendar value="#{registrar.fechanac}" />
+            <br/>
+            <h:outputText value =" Correo:"/>
+            <br/>
+            <h:inputText id="Correo" value="#{registrar.correo}"
+                         validatorMessage="#{registrar.correo} no es valido">
+            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+            </h:inputText>
+            <p:message for="Correo:" />            
+            <h:outputText value="Contrasena:" />
+            <br/>
+            <h:inputSecret value="#{registrar.contrasena}"/>
+            <br/><br/>
+            <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
+        </h:form>
                 
         </h:body>
 
