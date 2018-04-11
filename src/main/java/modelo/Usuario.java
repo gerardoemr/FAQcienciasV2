@@ -23,23 +23,14 @@ public class Usuario  implements java.io.Serializable {
 
     public Usuario() {
     }
-
-	
-    public Usuario(int idusuario, String nombre, String contrasena) {
-        this.idusuario = idusuario;
-        this.nombre = nombre;
-        this.contrasena = contrasena;
-    }
-    public Usuario(int idusuario, String nombre, Date fechanac, String correo, Character rol, String contrasena, Set preguntas, Set respuestas) {
-       this.idusuario = idusuario;
+    
+   public Usuario(String nombre, Date fechanac, String correo, Character rol, String contrasena) {
        this.nombre = nombre;
        this.fechanac = fechanac;
        this.correo = correo;
        this.rol = rol;
        this.contrasena = contrasena;
-       this.preguntas = preguntas;
-       this.respuestas = respuestas;
-    }
+}   
    
     public int getIdusuario() {
         return this.idusuario;

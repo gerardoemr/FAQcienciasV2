@@ -17,27 +17,29 @@
         <h:body>
             <h:form>               
      
-                <h:outputText value ="Introduzca los siguientes datos para registrarse."/>
-                <br/>
+                <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
+                <br/><br/>
                 <h:outputText value="Nombre:" />
-                <p:inputText value="#{agregarUsuario.nombre}" placeholder="nombre"/>
-                
+                <br/>
+                <h:inputText value="#{registrar.nombre}" />
                 <br/>
                 <h:outputText value="Fecha de nacimiento:" />
-                <p:calendar value="#{agregarUsuario.fechanac}" placeholder="fechanac"/>
                 <br/>
-                <h:outputText value =" Correo"/>
+                <p:calendar value="#{registrar.fechanac}" />
                 <br/>
-                <h:inputText id="Correo" value="#{agregarUsuario.correo}"
-                             validatorMessage="#{agregarUsuario.correo} no es valido">
+                <h:outputText value =" Correo:"/>
+                <br/>
+                <h:inputText id="Correo" value="#{registrar.correo}"
+                             validatorMessage="#{registrar.correo} no es valido">
                 <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                 </h:inputText>
-                <p:message for="Correo" />
-                <br/>                
+                <p:message for="Correo:" />            
                 <h:outputText value="Contrasena:" />
-                <p:inputText value="#{agregarUsuario.contrasena}" placeholder="contrasena"/>
-                <br/>  
-                <p:commandButton value=" Registrarse " action="#{agregarUsuario.agregaUsuario()}" />
+                <br/>
+                <h:inputSecret value="#{registrar.contrasena}"/>
+                <br/><br/>
+                <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
+                <p:commandButton value=" Regresar " action="index" />
             </h:form>
                 
         </h:body>

@@ -20,20 +20,23 @@ public class Pregunta  implements java.io.Serializable {
      private Integer vistas;
      private char activa;
      private Set respuestas = new HashSet(0);
-
+     
+     
     public Pregunta() {
-    }
-
-	
-    public Pregunta(int idpregunta, Usuario usuario, String titulo, Date fecha, char activa) {
+    } 
+    public Pregunta(int idpregunta) {
         this.idpregunta = idpregunta;
+    }
+	
+    public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, char activa) {
         this.usuario = usuario;
         this.titulo = titulo;
+        this.detalles = detalles;
         this.fecha = fecha;
+        this.vistas = 0;
         this.activa = activa;
     }
-    public Pregunta(int idpregunta, Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, char activa, Set respuestas) {
-       this.idpregunta = idpregunta;
+    public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, char activa, Set respuestas) {
        this.usuario = usuario;
        this.titulo = titulo;
        this.detalles = detalles;
@@ -100,9 +103,4 @@ public class Pregunta  implements java.io.Serializable {
         this.respuestas = respuestas;
     }
 
-
-
-
 }
-
-
