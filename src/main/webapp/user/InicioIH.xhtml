@@ -10,16 +10,17 @@
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form> 
             <p:menubar>
-                    <f:facet name="options">
-                        <h:commandLink action="InicioIH">
+                <f:facet name="options">
+                    <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
-                        </h:commandLink>
-                        <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
-                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                        <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
-                    </f:facet>
+                    </h:commandLink>
+                    <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                    <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
+                </f:facet>
             </p:menubar>
         </h:form>
         <div class="ui-g">
