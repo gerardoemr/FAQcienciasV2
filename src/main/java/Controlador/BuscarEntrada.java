@@ -10,6 +10,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import modelo.Pregunta;
 import modelo.PreguntaDAO;
 import modelo.Respuesta;
@@ -66,8 +67,6 @@ public class BuscarEntrada implements Serializable {
                 preguntasResult.add(p);
             }
         }
-        if (Login.login)
-            return "ResultadosIH2";
         return "ResultadosIH";
     }
 

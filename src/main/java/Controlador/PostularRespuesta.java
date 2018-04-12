@@ -89,7 +89,7 @@ public class PostularRespuesta {
     public String postulaRespuesta() {
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
          if(usuario == null) {
-             return "/LoginIH?faces-redirect=true";
+             return "/LoginIH";
          }
          fecha = new Date();
          

@@ -33,19 +33,19 @@ public class VerRespuesta {
      context.getExternalContext().getSessionMap().put("pregunta", p);
     RespuestaDAO lib = new RespuestaDAO();
     respuestas= lib.respuestas(pregunta);
-    return "VerRespuestas";
+    return "verrespuestas";
     }
     
     public String postular() {
-        if(Login.login)
+        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user") != null)
             return "VistaPostularRespuesta";
         return "LoginIH";
     }
     
     public String regreso() {
-        if (Login.login)
+        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user") != null)
             return "InicioIH";
-        return "index";
+        return "/index";
     }
 
 }

@@ -17,7 +17,6 @@ public class Login {
     
     private String correo;
     private String contrasena;
-    public static boolean login = false;
     
     public String getCorreo() {
         return correo;
@@ -36,7 +35,6 @@ public class Login {
     }
     
     public String login() {
-        Login.login = true;
         UsuarioDAO dao = new UsuarioDAO();
         Usuario u = dao.busca(correo);
         FacesContext context = FacesContext.getCurrentInstance();
@@ -49,7 +47,7 @@ public class Login {
         } else if(u.getContrasena().equals(this.contrasena)){
             context.getExternalContext().getSessionMap().put("user", u);
             
-            return "InicioIH?faces-redirect=true";
+            return "user/InicioIH";
         } else {
             context.addMessage(null, new FacesMessage("Contraseña incorrecta"));
             correo = null;
@@ -59,9 +57,8 @@ public class Login {
     }
 
     public String logout() {
-        Login.login = false;
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index?faces-redirect=true";
+        return "/index";
     }
     
     public String regreso() {

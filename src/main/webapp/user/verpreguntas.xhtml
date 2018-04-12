@@ -9,23 +9,26 @@
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>respuestas</title>
+                <title>Preguntas</title>
             </f:facet>
         </h:head>
 
         <h:body>      
             <h:form>
-                <p:dataTable id="resp" value="#{verRespuesta.respuestas}" var="respuesta" rows="5"
+                <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15">
-                    <p:column headerText="RESPUESTAS">
-                        <p:outputLabel value="#{respuesta.detalles}"/>
-                    </p:column>        
-                </p:dataTable>   
-                <br/>
-                <p:commandButton value="Postular Respuesta" action="#{verRespuesta.postular()}"/>
-                <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.regreso()}"/>
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.titulo}" />                            
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                        </p:column>
+                        <p:column>
+                            <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                        </p:column>
+                </p:dataTable>                
             </h:form>
         </h:body>
     </f:view>
