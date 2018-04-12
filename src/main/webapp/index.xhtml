@@ -40,6 +40,11 @@
                             <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
                         </p:column>
                 </p:dataTable>    
+                <f:facet name="options">
+                    <h:form>
+                        <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    </h:form>
+                </f:facet>
             </div>
         </div>
 

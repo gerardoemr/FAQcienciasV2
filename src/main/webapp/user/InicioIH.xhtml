@@ -16,7 +16,6 @@
                         <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                         </h:commandLink>
-                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
                         <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
                         <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" style="vertical-align: middle"/>
                         <p:inputText style="margin-right:10px;vertical-align: middle" placeholder=""/>
@@ -41,14 +40,11 @@
                             <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
                         </p:column>
                 </p:dataTable> 
-                <p:menubar>
-                    <f:facet name="options">
-                        <h:form>
-                            <p:commandButton value="Crear Nueva Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
-                        </h:form>
-                    </f:facet>
-                    
-                </p:menubar>
+                <f:facet name="options">
+                     <h:form>
+                        <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    </h:form>
+                </f:facet>
             </div>
         </div>        
     </h:body>
