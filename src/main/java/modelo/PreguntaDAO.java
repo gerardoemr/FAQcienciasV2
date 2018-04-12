@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.List;
@@ -22,6 +17,10 @@ public class PreguntaDAO {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
+    /**
+     *Mete una pregunta nueva a la base de datos
+     * @param p - la pregunta a insertar
+     */
     public void insert(Pregunta p){
         Session session = sessionFactory.openSession();
         Transaction tx = null;

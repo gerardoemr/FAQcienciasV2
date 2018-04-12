@@ -8,7 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- *
+ * UsuarioDAO.java
+ * 
+ * Clase que permite realizar consultas sobre la tabla Usuario en la base de datos.
+ * 
  * @author gerardo
  */
 public class UsuarioDAO {
@@ -17,7 +20,11 @@ public class UsuarioDAO {
     public UsuarioDAO(){
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
-    
+   
+   /**
+    * Método que regresa una lista con todos los usuarios registrados en la base de datos.
+    * @return List<Usuario>
+    */
    public List<Usuario> usuarios() {
         List<Usuario> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -47,7 +54,7 @@ public class UsuarioDAO {
    
     /**
      * Regresa el Usuario que tiene el correo recibido como parámetro.
-     * @return 
+     * @return Usuario
      */
     public Usuario busca(String correo) {
         Usuario result = null;
@@ -97,6 +104,10 @@ public class UsuarioDAO {
         }
     }
     
+    /**
+     * Método por ser implementado en la segunda iteración
+     * @param id del usuario que se desea eliminar
+     */
     public void elimina(String id){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -127,6 +138,17 @@ public class UsuarioDAO {
         }
     }
     
+    /**
+     * Método por ser implementado en la segunda iteración.
+     * Actualiza los atributos de un Usuario en la base de datos.
+     * @param id
+     * @param n
+     * @param of
+     * @param fun
+     * @param empl
+     * @param con
+     * @param pres 
+     */
     public void actualiza(String id, String n, String of, Date fun, Short empl, String con, String pres){
         Session session = sessionFactory.openSession();
         Transaction tx = null;

@@ -8,38 +8,6 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-<<<<<<< HEAD
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-
-     <f:view contentType="text/html">
-        <h:head>
-            <title>Inciar Sesión</title>
-            <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
-        </h:head>
-
-        <h:body>
-            <h:form>
-                <h:outputText value="Iniciar Sesion"/>
-                <br/><br/>
-                <h:outputText value="Correo: " />
-                <h:inputText id="correo" value="#{login.correo}" 
-                           required="false" requiredMessage="Ingrese su correo" /><br/>
-                <h:message for="username" errorClass="errorMessage" /> <!-- Message for username -->
-
-                <h:outputText value="Contraseña: " />
-                <h:inputSecret id="contrasena" value="#{login.contrasena}" 
-                           required="false" requiredMessage="Escriba su contraseña" /><br/>
-                <h:message for="password" errorClass="errorMessage" /> <!-- Message for password -->
-                <br/>
-                <p:commandButton value="Login" action="#{login.login}" />
-                <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{login.regreso()}"/>
-             </h:form>
-            <h:messages styleClass="errorMessage" /> <!-- Global messages -->
-        </h:body>
-    </f:view>
-</html>
-=======
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -59,6 +27,19 @@ and open the template in the editor.
 </h:head>
 
 <h:body>
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" style="vertical-align: middle" />
+                        <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" style="vertical-align: middle"/>
+                        <p:inputText style="margin-right:10px;vertical-align: middle" value="Buscar" placeholder=""/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
         <h:form>            
             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
    
@@ -81,4 +62,3 @@ and open the template in the editor.
 </html>
 
 
->>>>>>> upstream/master

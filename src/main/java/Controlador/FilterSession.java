@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
 import java.io.IOException;
@@ -17,9 +12,18 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
- *
- * @author jonathan
+ * FilterSession.java:
+ * 
+ *  Controlador para el caso de uso iniciar y cerrar sesión.  
+ *  Protege las vistas a las que sólo puede accedes un usario registrado. 
+ *  Dichas vistas están ubicadas en la carpeta /user
+ * 
+ * @author gerardo
+ * @version 1.0, 10/04/2018
+ * @see documento "Especificación de Diseño de Software"
+ * @since jdk 7.0 
  */
 @WebFilter("/user/*")
 public class FilterSession implements Filter {

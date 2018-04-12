@@ -103,9 +103,4 @@ public class Pregunta  implements java.io.Serializable {
         this.respuestas = respuestas;
     }
 
-
-
-
 }
-
-
