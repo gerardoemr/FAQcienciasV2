@@ -36,41 +36,25 @@ public class Login implements Serializable{
      */
     private String contrasena;
 
-    /**
-     * Getter del atributo correo
-     * @return cadena del correo 
-     */
     public String getCorreo() {
         return correo;
     }
     
-    /**
-     * Setter del atributo correo.
-     * @param correo cadena correo. 
-     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    /**
-     * Getter del atributo contrasena.
-     * @return cadena contrasena
-     */
     public String getContrasena() {
         return contrasena;
     }
 
-    /**
-     * Setter del atributo contrasena.
-     * @param contrasena 
-     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
     
     /**
      * Método principal para iniciar sesión
-     * @return cadena que redirige al usuario a la vista InicioIH si la autenticación fue exitosa.
+     * @return cadena que redirige al usuario a la vista InicioIH si la autenticación fue exitosa, null en otro caso.
      * @throws IOException 
      */
     public String login() throws IOException {
@@ -98,7 +82,7 @@ public class Login implements Serializable{
     
     /**
      * Método para cerrar sesión.
-     * @return cadena que redirige al usuario a la página principal.
+     * @return cadena que cierra la sesión del usuario actual y lo redirige a la página index.
      * @throws IOException 
      */
     public String logout() throws IOException {
