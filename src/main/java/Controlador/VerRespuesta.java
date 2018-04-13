@@ -41,11 +41,4 @@ public class VerRespuesta {
             return "VistaPostularRespuesta";
         return "LoginIH";
     }
-    
-    public String regreso() {
-        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user") != null)
-            return "InicioIH";
-        return "/index";
-    }
-
 }
