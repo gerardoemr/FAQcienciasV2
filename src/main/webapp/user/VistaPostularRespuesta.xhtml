@@ -20,27 +20,34 @@
                             <h:commandLink action="InicioIH">
                                 <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                             </h:commandLink>
-                            <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" />
-                            <p:inputText style="margin-right:10px;vertical-align: middle" value="Buscar" placeholder=""/>
+                            <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                            <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                            <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
                         </f:facet>
                 </p:menubar>
             </h:form>
             <h:form>
-                <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
-                <p:panel id="panel" header="Postular Respuesta">
-                    <p:messages id="msgs" />
-                    <h:outputText value="Titulo: " />
-                    <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
-                        <f:validateLength minimum="3" />
-                    </p:inputText> <p:message for="respuesta" display="icon" />
-                    <br/>
-                    <h:outputText value="Detalles: " />
-                    <br/>
-                    <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
-                    <br/><br/>
-                    <p:commandButton value=" Enviar " update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
-                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}"/>
-                </p:panel>
+                <div class="ui-g">
+                    <div class="ui-g-2">Empty</div>
+                    <div class="ui-g-8">
+                        <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
+                        <p:panel id="panel" header="Postular Respuesta">
+                            <p:messages id="msgs" />
+                            <h:outputText value="Respuesta: " />
+                            <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
+                                <f:validateLength minimum="3" />
+                            </p:inputText> <p:message for="respuesta" display="icon" />
+                            <br/>
+                            <h:outputText value="Detalles: " />
+                            <br/>
+                            <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
+                            <br/><br/>
+                            <p:commandButton value="Enviar" update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
+                            <p:commandButton value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}" icon="ui-icon-arrowreturnthick-1-w" />
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-2">Empty</div>
+                </div>
             </h:form>
         </h:body>
 

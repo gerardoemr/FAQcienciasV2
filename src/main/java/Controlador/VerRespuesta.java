@@ -35,10 +35,4 @@ public class VerRespuesta {
     respuestas= lib.respuestas(pregunta);
     return "verrespuestas";
     }
-    
-    public String postular() {
-        if(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user") != null)
-            return "VistaPostularRespuesta";
-        return "LoginIH";
-    }
 }
