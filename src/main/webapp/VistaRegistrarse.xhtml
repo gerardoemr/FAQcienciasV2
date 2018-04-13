@@ -16,30 +16,31 @@
 
         <h:body>
             <h:form>               
-     
-                <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
-                <br/><br/>
-                <h:outputText value="Nombre:" />
-                <br/>
-                <h:inputText value="#{registrar.nombre}" />
-                <br/>
-                <h:outputText value="Fecha de nacimiento:" />
-                <br/>
-                <p:calendar value="#{registrar.fechanac}" yearRange="c-100:c+100" navigator="true"/>
-                <br/>
-                <h:outputText value =" Correo:"/>
-                <br/>
-                <h:inputText id="Correo" value="#{registrar.correo}"
-                             validatorMessage="#{registrar.correo} no es valido">
-                <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                </h:inputText>
-                <p:message for="Correo:" />            
-                <h:outputText value="Contrasena:" />
-                <br/>
-                <h:inputSecret value="#{registrar.contrasena}"/>
-                <br/><br/>
-                <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
-                <p:commandButton value=" Regresar " action="index" />
+                <p:panel widgetVar="dlg" header="Registro" style="width: 450px">
+                    <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
+                    <br/><br/>
+                    <h:outputText value="Nombre:" />
+                    <br/>
+                    <h:inputText value="#{registrar.nombre}" />
+                    <br/>
+                    <h:outputText value="Fecha de nacimiento:" />
+                    <br/>
+                    <p:calendar value="#{registrar.fechanac}" yearRange="c-100:c+100" navigator="true"/>
+                    <br/>
+                    <h:outputText value =" Correo:"/>
+                    <br/>
+                    <h:inputText id="Correo" value="#{registrar.correo}"
+                                 validatorMessage="#{registrar.correo} no es valido">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </h:inputText>
+                    <p:message for="Correo:" />            
+                    <h:outputText value="Contraseña:" />
+                    <br/>
+                    <h:inputSecret value="#{registrar.contrasena}"/>
+                    <br/><br/>
+                    <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
+                    <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value=" Regresar " action="index" />
+                </p:panel>
             </h:form>
                 
         </h:body>

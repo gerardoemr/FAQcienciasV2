@@ -19,22 +19,25 @@ and open the template in the editor.
 
         <h:body>
             <h:form>
-                <h:outputText value="Iniciar Sesion"/>
-                <br/><br/>
-                <h:outputText value="Correo: " />
-                <h:inputText id="correo" value="#{login.correo}" 
-                           required="false" requiredMessage="Ingrese su correo" /><br/>
-                <h:message for="username" errorClass="errorMessage" /> <!-- Message for username -->
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+                <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="correo" value="Correo:" />
+                        <p:inputText id="correo" value="#{login.correo}" label="correo" />
 
-                <h:outputText value="Contraseña: " />
-                <h:inputSecret id="contrasena" value="#{login.contrasena}" 
-                           required="false" requiredMessage="Escriba su contraseña" /><br/>
-                <h:message for="password" errorClass="errorMessage" /> <!-- Message for password -->
-                <br/>
-                <p:commandButton value="Login" action="#{login.login}" />
-                <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="#{login.regreso()}"/>
+                        <h:outputLabel for="contrasena" value="Contraseña:" />
+                        <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl" action="#{login.login}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                            <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="index"/>
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:panel>   
              </h:form>
-            <h:messages styleClass="errorMessage" /> <!-- Global messages -->
+    
         </h:body>
     </f:view>
 </html>
