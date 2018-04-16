@@ -67,7 +67,7 @@ public class BuscarEntrada implements Serializable {
                 preguntasResult.add(p);
             }
         }
-        return "ResultadosIH";
+        return "ResultadosIH?faces-redirect=true";
     }
 
     public List<Pregunta> getPreguntasResult() {
