@@ -20,7 +20,8 @@
                     <p:commandButton value="Registro" action= "VistaRegistrarse" />
                     <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
                     <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                    <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
+                    <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                    <p:defaultCommand target="buscar"/>
                 </f:facet>
             </p:menubar>
         </h:form>
@@ -31,17 +32,26 @@
                              paginator="true"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                              rowsPerPageTemplate="10,15,20">
-                            <p:column>
-                                <p:outputLabel value="#{pregunta.titulo}" />                            
-                            </p:column>
-                            <p:column>
-                                <p:outputLabel value="#{pregunta.detalles}"/>                                     
-                            </p:column>
-                            <p:column>
-                                <h:form>
-                                    <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
-                                </h:form>
-                            </p:column>
+                    <p:column>
+                       <p:fieldset legend="#{pregunta.titulo}" toggleable="true" collapsed="true">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Detalles: " />
+                                <h:outputText value="#{pregunta.detalles}" />
+
+                                <h:outputText value="Usuario:" />
+                                <h:outputText value="#{pregunta.usuario.nombre}" />
+
+                                <h:outputText value="Fecha:" />
+                                <h:outputText value="#{pregunta.fecha}" />
+
+                                <h:outputText value="Vistas: " />
+                                <h:outputText value="#{pregunta.vistas}"/>
+                            </p:panelGrid>
+                            <h:form>
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                            </h:form>
+                        </p:fieldset>
+                   </p:column>
                     </p:dataTable> 
                         <h:form>
                             <p:commandButton value="Inicio" action="index"/>

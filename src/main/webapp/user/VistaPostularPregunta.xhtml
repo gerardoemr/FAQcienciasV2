@@ -22,7 +22,8 @@
                             </h:commandLink>
                             <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
                             <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                            <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
+                            <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                            <p:defaultCommand target="buscar"/>
                         </f:facet>
                 </p:menubar>
         </h:form>

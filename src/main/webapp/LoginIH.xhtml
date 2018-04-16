@@ -18,26 +18,45 @@ and open the template in the editor.
         </h:head>
 
         <h:body>
-            <h:form>
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
- 
-                <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="correo" value="Correo:" />
-                        <p:inputText id="correo" value="#{login.correo}" label="correo" />
+            
+            <h:form>  
+            <p:menubar>
+                <f:facet name="options">
+                    <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                    </h:commandLink>
+                    <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                    <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                    <p:defaultCommand target="buscar"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+            <div class="ui-g">
+                <div class="ui-g-4">Empty</div>
+                <div class="ui-g-4"> 
+                    <h:form>
+                        <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-                        <h:outputLabel for="contrasena" value="Contraseña:" />
-                        <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
+                        <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="correo" value="Correo:" />
+                                <p:inputText id="correo" value="#{login.correo}" label="correo" />
 
-                        <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" action="#{login.login}"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
-                            <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value="Regresar" action="index"/>
-                        </f:facet>  
-                    </h:panelGrid>
-                </p:panel>   
-             </h:form>
-    
+                                <h:outputLabel for="contrasena" value="Contraseña:" />
+                                <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
+
+                                <f:facet name="footer">
+                                    <p:commandButton value="Login" update="growl" action="#{login.login}"
+                                                     oncomplete="handleLoginRequest(xhr, status, args)" />
+                                </f:facet>  
+                            </h:panelGrid>
+                        </p:panel>   
+                    </h:form>
+                </div>
+                <div class="ui-g-4">Empty</div>
+            </div>
         </h:body>
     </f:view>
 </html>
