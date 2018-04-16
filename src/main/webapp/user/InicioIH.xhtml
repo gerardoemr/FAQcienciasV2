@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -10,8 +11,65 @@
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
-        <h:form>
+        <h:form> 
             <p:menubar>
+                <f:facet name="options">
+                    <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                    </h:commandLink>
+                    <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                    <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout()}" />
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
+                    <p:defaultCommand target="btn"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-2">Empty</div>
+            <div class="ui-g-6">
+               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,15,20">
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.titulo}" />                            
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{pregunta.detalles}"/>                                     
+                        </p:column>
+                        <p:column>
+                            <h:form>
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                            </h:form>
+                        </p:column>
+                </p:dataTable> 
+                    <h:form>
+                        <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    </h:form>
+            </div>
+            <div class="ui-g-2"><p style="font-style: italic">Bienvenido, #{user.nombre}</p></div>
+            <div class="ui-g-2">Empty</div>
+        </div>        
+    </h:body>
+</html>
+
+=======
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <title>Inicio</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:menubar>
+<<<<<<< HEAD
                     <f:facet name="options">
                         <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
@@ -23,13 +81,26 @@
             </p:menubar>
         </h:form>
         <p style="font-style: italic">Bienvenido, #{user.nombre}</p>
+=======
+                <f:facet name="options">
+                    <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 980px; vertical-align: middle"/>
+                    </h:commandLink>
+                    <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout()}" />
+                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                    <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
+                    <p:defaultCommand target="btn"/>
+                </f:facet>
+            </p:menubar>
+        </h:form>
+>>>>>>> 809636fb8c3f0ced8bf583118e6b7518c0f6140a
         <div class="ui-g">
-            <div class="ui-g-1"></div>
-            <div class="ui-g-8">
-               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
+            <div class="ui-g-2">Empty</div>
+            <div class="ui-g-6">
+               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
+                         rowsPerPageTemplate="10,15,20">
                         <p:column>
                             <p:outputLabel value="#{pregunta.titulo}" />                            
                         </p:column>
@@ -37,9 +108,12 @@
                             <p:outputLabel value="#{pregunta.detalles}"/>                                     
                         </p:column>
                         <p:column>
-                            <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                            <h:form>
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                            </h:form>
                         </p:column>
                 </p:dataTable> 
+<<<<<<< HEAD
                 <f:facet name="options">
                      <h:form>
                         <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
@@ -47,6 +121,16 @@
                 </f:facet>
             </div>
         </div>        
+=======
+                    <h:form>
+                        <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    </h:form>
+            </div>
+            <div class="ui-g-2"><p style="font-style: italic">Bienvenido, #{user.nombre}</p></div>
+            <div class="ui-g-2">Empty</div>
+        </div>
+>>>>>>> 809636fb8c3f0ced8bf583118e6b7518c0f6140a
     </h:body>
 </html>
 
+>>>>>>> origin/master
