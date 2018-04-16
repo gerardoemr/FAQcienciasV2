@@ -67,8 +67,6 @@ public class BuscarEntrada implements Serializable {
                 preguntasResult.add(p);
             }
         }
-        if (FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user") != null )
-            return "user/ResultadosIH";
         return "ResultadosIH";
     }
 
