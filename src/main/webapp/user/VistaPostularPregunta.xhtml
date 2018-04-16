@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <h:head>
+                <title>Preguntas</title>
+                <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+            </h:head>
+        </h:head>
+
+        <h:body>
+            <h:form>
+                <p:menubar>
+                        <f:facet name="options">
+                            <h:commandLink action="InicioIH">
+                                <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                            </h:commandLink>
+                            <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                            <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                            <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                            <p:defaultCommand target="buscar"/>
+                        </f:facet>
+                </p:menubar>
+            </h:form>
+
+            <h:form>
+                <div class="ui-g">
+                    <div class="ui-g-2">Empty</div>
+                    <div class="ui-g-8">
+                        <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
+                        <p:panel id="panel" header="Postular Pregunta">
+                            <p:messages id="msgs" />
+                            <h:outputText value="Pregunta: " />
+                            <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta">
+                                <f:validateLength minimum="3" />
+                            </p:inputText> <p:message for="pregunta" display="icon" />
+                            <br/>
+                            <h:outputText value="Detalles: " />
+                            <br/>
+                            <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true" style="width: 500px"/>
+                            <br/><br/>
+                            <p:commandButton value="Enviar" update="panel" action="#{postularPregunta.postulaPregunta()}" />
+                            <p:commandButton value="Regresar" action="#{postularPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-2">Empty</div>
+                </div>
+            </h:form>
+            
+        </h:body>
+        
+    </f:view>
+</html>
