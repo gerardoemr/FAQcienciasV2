@@ -8,14 +8,23 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-     <f:view contentType="text/html">
-        <h:head>
-            <title>Inciar Sesión</title>
-            <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
-        </h:head>
+<h:head>
+        <title>Inciar Sesión</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if(args.validationFailed || !args.loggedIn) {
+                    PF('dlg').jq.effect("shake", {times:5}, 100);
+                }
+                else {
+                    PF('dlg').hide();
+                    $('#loginLink').fadeOut();
+                }
+            }
+        </script>
+</h:head>
 
         <h:body>
             
@@ -59,4 +68,16 @@ and open the template in the editor.
             </div>
         </h:body>
     </f:view>
+</html>
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl" action="#{login.login}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:panel>    
+            </h:form>
+        </div>
+        <div class="ui-g-4"></div>
+    </div>
+</h:body>
 </html>
