@@ -15,6 +15,19 @@
         </h:head>
 
         <h:body>
+            <h:form>
+                <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="index">
+                                <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
+                    </f:facet>
+                </p:menubar>
+            </h:form>
             Usuarios
             <p:dataScroller value="#{verUsuario.usuarios}" var="usuario" >
                 <h:outputText value="Nombre: " style="font-weight: bold" />
@@ -22,9 +35,7 @@
                 <h:outputText value=" | " style="font-weight: bold"/>
                 <h:outputText value="Correo: " style="font-weight: bold"/>
                 <h:outputText value="#{usuario.correo}" style="font-weight: bold"/>
-            </p:dataScroller>
-            
-            
+            </p:dataScroller>            
         </h:body>
 
     </f:view>

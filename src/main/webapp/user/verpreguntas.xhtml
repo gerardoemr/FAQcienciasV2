@@ -13,7 +13,19 @@
             </f:facet>
         </h:head>
 
-        <h:body>      
+        <h:body>
+            <h:form>
+                <p:menubar>
+                        <f:facet name="options">
+                            <h:commandLink action="InicioIH">
+                                <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                            </h:commandLink>
+                            <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                            <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                            <p:commandButton value="Buscar" action="#{buscarEntrada.init()}" />
+                        </f:facet>
+                </p:menubar>
+            </h:form>
             <h:form>
                 <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="5"
                          paginator="true"
