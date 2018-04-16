@@ -20,6 +20,7 @@ public class Pregunta  implements java.io.Serializable {
      private Integer vistas;
      private char activa;
      private Set respuestas = new HashSet(0);
+     private String nombre;
      
      
     public Pregunta() {
@@ -35,6 +36,7 @@ public class Pregunta  implements java.io.Serializable {
         this.fecha = fecha;
         this.vistas = 0;
         this.activa = activa;
+        this.nombre=usuario.getNombre();
     }
     public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, char activa, Set respuestas) {
        this.usuario = usuario;
@@ -53,6 +55,10 @@ public class Pregunta  implements java.io.Serializable {
     public void setIdpregunta(int idpregunta) {
         this.idpregunta = idpregunta;
     }
+    public String nombre(){
+        return usuario.getNombre();
+    }
+    
     public Usuario getUsuario() {
         return this.usuario;
     }

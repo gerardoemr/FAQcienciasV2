@@ -41,6 +41,27 @@ public class PreguntaDAO {
         }
     }
 
+    
+       public void aumentarVista(Pregunta p){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+           tx = session.beginTransaction();
+           p.setVistas(p.getVistas()+1);
+           session.update(p);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){ 
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+    }
+
     public List<Pregunta> preguntas() {
         List<Pregunta> result = null;
         // arbrimos la sesion son sessionFactory 

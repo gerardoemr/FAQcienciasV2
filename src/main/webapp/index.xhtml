@@ -32,12 +32,14 @@
                            <p:column>
                                <p:outputLabel value="#{pregunta.titulo}" />                            
                            </p:column>
-                        
+                           <p:column>
+                               <p:outputLabel value="#{pregunta.vistas}" />                            
+                           </p:column>
                            <p:column>
                                <p:outputLabel value="#{pregunta.detalles}"/>                                     
                            </p:column>
 
-                           <p:column>
+                           <p:column width="20" >
                                 <h:form>
                                     <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
                                 </h:form>
