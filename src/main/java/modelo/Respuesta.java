@@ -75,5 +75,3 @@ public class Respuesta  implements java.io.Serializable {
 
 
 }
-
-
