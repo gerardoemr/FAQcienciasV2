@@ -7,7 +7,7 @@
 
     <f:view contentType="text/html">
         <h:head>
-            <title>Regsitro</title>
+            <title>Registro</title>
             <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>    
         </h:head>
         <h:body>
@@ -28,28 +28,36 @@
             <div class="ui-g">
                 <div class="ui-g-4"></div>
                 <div class="ui-g-4">
-                    <h:form>               
+                    <h:form>      
+                        <p:messages id="msgs" autoUpdate ="true" />
                         <p:panel widgetVar="dlg" header="Registro" style="width: 450px">
                             <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
                             <br/><br/>
                             <h:outputText value="Nombre:" />
                             <br/>
-                            <h:inputText value="#{registrar.nombre}" />
+                            <h:inputText id ="nombre" value="#{registrar.nombre}" required="true" requiredMessage="Campo vacío. Ingrese un nombre">
+                             <f:validateLength minimum="1" />
+                            </h:inputText> 
+                            <p:message for="nombre" display="icon" />
                             <br/>
                             <h:outputText value="Fecha de nacimiento:" />
                             <br/>
-                            <p:calendar value="#{registrar.fechanac}" yearRange="c-100:c+100" navigator="true"/>
+                            <p:calendar id = "fecha" value="#{registrar.fechanac}" yearRange="c-100:c+100" navigator="true"
+                                        required="true" requiredMessage="Campo vacío. Ingrese una fecha"/>
+                            <p:message for="fecha" display="icon" />
                             <br/>
                             <h:outputText value =" Correo:"/>
                             <br/>
-                            <h:inputText id="Correo" value="#{registrar.correo}"
-                                         validatorMessage="#{registrar.correo} no es valido">
+                            <h:inputText id="correo" value="#{registrar.correo}" required="true" requiredMessage="Campo vacío. Ingrese un correo"
+                             validatorMessage="Correo inválido. El dominio del correo debe ser @ciencias.unam.mx">
                             <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@ciencias.unam.mx" />
                             </h:inputText>
-                            <p:message for="Correo:" />            
+                            <p:message for="correo" display="icon" />                                 
+                            <br/>
                             <h:outputText value="Contraseña:" />
                             <br/>
-                            <h:inputSecret value="#{registrar.contrasena}"/>
+                            <h:inputSecret id="contrasena" value="#{registrar.contrasena}" required="true" requiredMessage="Campo vacío. Ingrese una contraseña"/>
+                            <p:message for="contrasena" display="icon" />
                             <br/><br/>
                             <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
                             <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value=" Regresar " action="index" />

@@ -77,6 +77,6 @@ public class Registrar {
         UsuarioDAO ud = new UsuarioDAO();
         ud.agrega(u);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);
-        return "user/InicioIH";
+        return "user/VerificacionCorreo";
     }
 }
