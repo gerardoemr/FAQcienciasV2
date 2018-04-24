@@ -27,7 +27,7 @@ public class PostularPregunta {
      private String detalles;
      private Date fecha;
      private Integer vistas;
-     private char activa;
+     private boolean activa;
 
     public int getIdpregunta() {
         return idpregunta;
@@ -77,14 +77,15 @@ public class PostularPregunta {
         this.vistas = vistas;
     }
 
-    public char getActiva() {
+    public boolean isActiva() {
         return activa;
     }
 
-    public void setActiva(char activa) {
+    public void setActiva(boolean activa) {
         this.activa = activa;
     }
-     
+
+ 
     /**
      * Metodo que permite la interaccion entre la vista 
      * "VistaPostularPregunta" y el modelo "Pregunta".
@@ -93,7 +94,7 @@ public class PostularPregunta {
     public String postulaPregunta() {
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
          
-         activa = '1';
+         activa = true;
          fecha = new Date();
          Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
          if (verificaTitulo(titulo)) {

@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -18,27 +18,29 @@ public class Pregunta  implements java.io.Serializable {
      private String detalles;
      private Date fecha;
      private Integer vistas;
-     private char activa;
+     private boolean activa;
      private Set respuestas = new HashSet(0);
-     private String nombre;
      
-     
-    public Pregunta() {
-    } 
-    public Pregunta(int idpregunta) {
-        this.idpregunta = idpregunta;
-    }
-	
-    public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, char activa) {
+    public Pregunta(){}
+
+    public Pregunta(Usuario usuario, String titulo,String detalles, Date fecha, boolean activa) {
         this.usuario = usuario;
         this.titulo = titulo;
         this.detalles = detalles;
         this.fecha = fecha;
-        this.vistas = 0;
         this.activa = activa;
-        this.nombre=usuario.getNombre();
     }
-    public Pregunta(Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, char activa, Set respuestas) {
+
+	
+    public Pregunta(int idpregunta, Usuario usuario, String titulo, Date fecha, boolean activa) {
+        this.idpregunta = idpregunta;
+        this.usuario = usuario;
+        this.titulo = titulo;
+        this.fecha = fecha;
+        this.activa = activa;
+    }
+    public Pregunta(int idpregunta, Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, boolean activa, Set respuestas) {
+       this.idpregunta = idpregunta;
        this.usuario = usuario;
        this.titulo = titulo;
        this.detalles = detalles;
@@ -55,10 +57,6 @@ public class Pregunta  implements java.io.Serializable {
     public void setIdpregunta(int idpregunta) {
         this.idpregunta = idpregunta;
     }
-    public String nombre(){
-        return usuario.getNombre();
-    }
-    
     public Usuario getUsuario() {
         return this.usuario;
     }
@@ -94,11 +92,11 @@ public class Pregunta  implements java.io.Serializable {
     public void setVistas(Integer vistas) {
         this.vistas = vistas;
     }
-    public char getActiva() {
+    public boolean isActiva() {
         return this.activa;
     }
     
-    public void setActiva(char activa) {
+    public void setActiva(boolean activa) {
         this.activa = activa;
     }
     public Set getRespuestas() {
@@ -109,4 +107,9 @@ public class Pregunta  implements java.io.Serializable {
         this.respuestas = respuestas;
     }
 
+
+
+
 }
+
+

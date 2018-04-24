@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,21 +16,44 @@ public class Usuario  implements java.io.Serializable {
      private String nombre;
      private Date fechanac;
      private String correo;
-     private Character rol;
+     private Boolean administrador;
      private String contrasena;
+     private Boolean aceptado;
      private Set preguntas = new HashSet(0);
      private Set respuestas = new HashSet(0);
 
     public Usuario() {
     }
-    
-   public Usuario(String nombre, Date fechanac, String correo, Character rol, String contrasena) {
+
+	
+    public Usuario(int idusuario, String nombre, Date fechanac, String correo, String contrasena) {
+        this.idusuario = idusuario;
+        this.nombre = nombre;
+        this.fechanac = fechanac;
+        this.correo = correo;
+        this.contrasena = contrasena;
+    }
+    public Usuario(int idusuario, String nombre, Date fechanac, String correo, Boolean administrador, String contrasena, Boolean aceptado, Set preguntas, Set respuestas) {
+       this.idusuario = idusuario;
        this.nombre = nombre;
        this.fechanac = fechanac;
        this.correo = correo;
-       this.rol = rol;
+       this.administrador = administrador;
        this.contrasena = contrasena;
-}   
+       this.aceptado = aceptado;
+       this.preguntas = preguntas;
+       this.respuestas = respuestas;
+    }
+    
+    
+    public Usuario(String nombre,Date fechanac,String correo,Boolean administrador,String contrasena,Boolean aceptado){
+        this.nombre = nombre;
+        this.fechanac = fechanac;
+        this.correo = correo;
+        this.administrador = administrador;
+        this.contrasena = contrasena;
+        this.aceptado = aceptado;
+    }
    
     public int getIdusuario() {
         return this.idusuario;
@@ -60,12 +83,12 @@ public class Usuario  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    public Character getRol() {
-        return this.rol;
+    public Boolean getAdministrador() {
+        return this.administrador;
     }
     
-    public void setRol(Character rol) {
-        this.rol = rol;
+    public void setAdministrador(Boolean administrador) {
+        this.administrador = administrador;
     }
     public String getContrasena() {
         return this.contrasena;
@@ -73,6 +96,13 @@ public class Usuario  implements java.io.Serializable {
     
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+    public Boolean getAceptado() {
+        return this.aceptado;
+    }
+    
+    public void setAceptado(Boolean aceptado) {
+        this.aceptado = aceptado;
     }
     public Set getPreguntas() {
         return this.preguntas;
@@ -89,7 +119,6 @@ public class Usuario  implements java.io.Serializable {
         this.respuestas = respuestas;
     }
 
-
-
-
 }
+
+

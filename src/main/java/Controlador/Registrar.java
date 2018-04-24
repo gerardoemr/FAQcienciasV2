@@ -19,7 +19,8 @@ public class Registrar {
      private String nombre;
      private Date fechanac;
      private String correo;
-     private Character rol;
+     private Boolean administrador;
+     private Boolean aceptado;
      private String contrasena;
 
     public int getIdusuario() {
@@ -54,13 +55,23 @@ public class Registrar {
         this.correo = correo;
     }
 
-    public Character getRol() {
-        return rol;
+    public Boolean getAdministrador() {
+        return administrador;
     }
 
-    public void setRol(Character rol) {
-        this.rol = rol;
+    public void setAdministrador(Boolean administrador) {
+        this.administrador = administrador;
     }
+
+    public Boolean getAceptado() {
+        return aceptado;
+    }
+
+    public void setAceptado(Boolean aceptado) {
+        this.aceptado = aceptado;
+    }
+    
+    
 
     public String getContrasena() {
         return contrasena;
@@ -72,8 +83,9 @@ public class Registrar {
 
     
     public String agregaUsuario(){
-        rol='0';
-        Usuario u = new Usuario(nombre,fechanac,correo,rol,contrasena);     
+        administrador = false;
+        aceptado = false;
+        Usuario u = new Usuario(nombre,fechanac,correo,administrador,contrasena,aceptado);     
         UsuarioDAO ud = new UsuarioDAO();
         ud.agrega(u);
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);

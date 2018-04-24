@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="idusuario" type="int">
@@ -12,16 +12,19 @@
             <column name="nombre" not-null="true" />
         </property>
         <property name="fechanac" type="date">
-            <column name="fechanac" length="13" />
+            <column name="fechanac" length="13" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" />
+            <column name="correo" not-null="true" />
         </property>
-        <property name="rol" type="java.lang.Character">
-            <column name="rol" length="1" />
+        <property name="administrador" type="java.lang.Boolean">
+            <column name="administrador" />
         </property>
         <property name="contrasena" type="string">
-            <column name="contrasena" length="30" not-null="true" />
+            <column name="contrasena" not-null="true" />
+        </property>
+        <property name="aceptado" type="java.lang.Boolean">
+            <column name="aceptado" />
         </property>
         <set name="preguntas" table="pregunta" inverse="true" lazy="true" fetch="select">
             <key>

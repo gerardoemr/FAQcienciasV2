@@ -50,8 +50,8 @@ Contributor(s):
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <mapping resource="modelo/Respuesta.hbm.xml"/>
     <mapping resource="modelo/Usuario.hbm.xml"/>
     <mapping resource="modelo/Pregunta.hbm.xml"/>
+    <mapping resource="modelo/Respuesta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

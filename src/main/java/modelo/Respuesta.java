@@ -1,5 +1,5 @@
 package modelo;
-// Generated 21/03/2018 11:34:09 AM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,7 +20,15 @@ public class Respuesta  implements java.io.Serializable {
     public Respuesta() {
     }
 
-    public Respuesta(Pregunta pregunta, Usuario usuario, String titulo, String detalles, Date fecha) {
+	
+    public Respuesta(Pregunta pregunta, Usuario usuario, String titulo,String detalles, Date fecha) {
+        this.pregunta = pregunta;
+        this.usuario = usuario;
+        this.titulo = titulo;
+        this.fecha = fecha;
+    }
+    public Respuesta(int idrespuesta, Pregunta pregunta, Usuario usuario, String titulo, String detalles, Date fecha) {
+       this.idrespuesta = idrespuesta;
        this.pregunta = pregunta;
        this.usuario = usuario;
        this.titulo = titulo;
@@ -75,3 +83,5 @@ public class Respuesta  implements java.io.Serializable {
 
 
 }
+
+
