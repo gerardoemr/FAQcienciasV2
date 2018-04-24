@@ -156,6 +156,8 @@ public class UsuarioDAO {
             tx = session.beginTransaction();
 
             String hql = "from Usuario where idE = " + id;
+            
+            
 
             Query query = session.createQuery(hql);
 
