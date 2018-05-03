@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Confirmación</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="index">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" style="vertical-align: middle" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="btn"/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-4"></div>
+            <div class="ui-g-4">
+                <h:form>
+                    <p:panel header="Información" style="margin-bottom:10px;">
+                        Hemos enviado a tu correo la contraseña.
+                    </p:panel>
+                </h:form>
+            </div>
+            <div class="ui-g-4"></div>
+        </div> 
+    </h:body>
+</html>

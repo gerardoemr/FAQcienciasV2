@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-        <title>Inciar Sesión</title>
+        <title>Recuperar Contraseña</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
         <script type="text/javascript">
             function handleLoginRequest(xhr, status, args) {
@@ -44,27 +44,19 @@ and open the template in the editor.
     <div class="ui-g">
         <div class="ui-g-4"></div>
         <div class="ui-g-4">
-            <h:form>            
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
-                <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="correo" value="Correo:" />
-                        <p:inputText id="correo" value="#{login.correo}" label="correo" />
-
-                        <h:outputLabel for="contrasena" value="Contraseña:" />
-                        <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
-
-                        <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" action="#{login.login}"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
-                            
-                            
-                            <h:link value="¿Olvidaste la contraseña?" outcome="RecuperaIH" style="font-size: 15px"></h:link>
-                        </f:facet>
-                    </h:panelGrid>
-                     
-                </p:panel>   
+            <h:form>      
+                <p:messages id="msgs" autoUpdate ="true" />
+                <p:panel widgetVar="dlg" header="Recuperar Contraseña" style="width: 450px">                    
+                    <h:outputText value ="Introduzca su correo:"/>
+                    <br/>
+                    <h:inputText style="width: 350px" id="correo" value="#{registrar.correo}" required="true" requiredMessage="Campo vacío. Ingrese un correo"
+                     validatorMessage="Correo inválido. El dominio del correo debe ser @ciencias.unam.mx">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@ciencias.unam.mx" />
+                    </h:inputText>
+                    <p:message for="correo" display="icon" />                                 
+                    <br/>
+                    <p:commandButton value="Enviar contraseña" action="MsjRecupera" />
+                </p:panel>
             </h:form>
         </div>
         <div class="ui-g-4"></div>
