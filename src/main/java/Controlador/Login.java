@@ -18,7 +18,7 @@ import org.primefaces.PrimeFaces;
  *  Controlador para el caso de uso  
  * 
  * @author gerardo
- * @version 1.0, 10/04/2018
+ * @version 2.0, 4/05/2018
  * @see documento "Especificación de Diseño de Software"
  * @since jdk 7.0 
  */
@@ -63,20 +63,39 @@ public class Login implements Serializable{
         FacesMessage message; //se crea este mensaje para mandar alertas en la vista.
         FacesContext context = FacesContext.getCurrentInstance();
         boolean loggedIn;//bandera para determinar si el inicio de sesión fue exitoso.
+        String s = null;
          
-        
-        if(u != null && contrasena.equals(u.getContrasena())) { //credenciales válidas
-            loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());//mensaje de bienvenida
-            context.getExternalContext().getSessionMap().put("user", u);//se agrega la información del usuario al contexto.
-        } else {//credenciales inválidas
+        if(u!= null){ 
             loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Credenciales inválidas");//mensaje de error
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error","Cuenta no verificada");
+            if(u.getAceptado()){
+                if(contrasena.equals(u.getContrasena())){ //credenciales válidas
+                    loggedIn = true;
+                    message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());//mensaje de bienvenida
+                    context.getExternalContext().getSessionMap().put("user", u);//se agrega la información del usuario al contexto.
+                    if(u.getAdministrador()){
+                        s = "/user/InicioAdminIH?facesRedirect=true";
+                    }
+                    else{
+                        s = "/user/InicioIH?facesRedirect=true";
+                    }
+                }
+                else{//credenciales inválidas
+                    loggedIn = false;
+                    message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Credenciales inválidas");//mensaje de error
+                }
+            }
+            else{//El usuario no ha verificado su cuenta
+                loggedIn = false;
+                message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Verifique su cuenta");
+            }
         }
-         
+        else{//El usuario no está registrado en la base de datos
+            loggedIn = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error", "Correo no registrado");
+        }
         FacesContext.getCurrentInstance().addMessage(null, message);
-        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-        String s =  (loggedIn) ? "/user/InicioIH": null; //cadena que redirige al usuario a InicioIH si el inicio de sesión fue exitoso.
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);     
         return s;
     }
     
@@ -87,7 +106,6 @@ public class Login implements Serializable{
      */
     public String logout() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();//cierra la sesión
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        return "/index";//se redirige al usuario a la página principal (index.xhtml)
+        return "/index?facesRedirect=true";//se redirige al usuario a la página principal (index.xhtml)
     }
 }

@@ -24,9 +24,9 @@
             </p:menubar>
         </h:form>
         <div class="ui-g">
-            <div class="ui-g-2">Empty</div>
+            <div class="ui-g-2"><p style="font-family: sans-serif">Bienvenido, #{user.nombre}</p></div>
             <div class="ui-g-6">
-               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="10"
+               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="9"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,15,20">
@@ -56,8 +56,8 @@
                         <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
                     </h:form>
             </div>
-            <div class="ui-g-2"><p style="font-style: italic">Bienvenido, #{user.nombre}</p></div>
-            <div class="ui-g-2">Empty</div>
+            <div class="ui-g-2"></div>
+            <div class="ui-g-2"></div>
         </div>        
     </h:body>
 </html>
