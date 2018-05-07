@@ -10,6 +10,17 @@
             <h:head>
                 <title>Preguntas</title>
                 <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+                <script type="text/javascript">
+                    function handlePostRequest(xhr, status, args) {
+                        if(args.validationFailed || !args.preguntaValida) {
+                            PF('dlg').jq.effect("shake", {times:5}, 100);
+                        }
+                        else {
+                            PF('dlg').hide();
+                            $('#postPregLink').fadeOut();
+                        }
+                    }
+                </script>
             </h:head>
         </h:head>
 
@@ -33,22 +44,28 @@
                     <div class="ui-g-2">Empty</div>
                     <div class="ui-g-8">
                         <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
-                        <p:panel id="panel" header="Postular Pregunta">
-                            <p:messages id="msgs" />
-                            <h:outputText value="Pregunta: " />
-                            <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta">
-                                <f:validateLength minimum="3" />
-                            </p:inputText> <p:message for="pregunta" display="icon" />
-                            <br/>
-                            <h:outputText value="Detalles: " />
-                            <br/>
-                            <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true" style="width: 500px"/>
-                            <br/><br/>
-                            <p:commandButton value="Enviar" update="panel" action="#{postularPregunta.postulaPregunta()}" />
-                            <p:commandButton value="Regresar" action="#{postularPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
-                        </p:panel>
+                        <h:form>
+                            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                            <p:panel id="panel" widgetVar="dlg" header="Postular Pregunta">
+                                <h:outputText value="Pregunta: " />
+                                <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta">
+                                </p:inputText> 
+                                <br/>
+                                <h:outputText value="Detalles: " />
+                                <br/>
+                                <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true" style="width: 500px"/>
+                                <br/><br/>
+                                <p:commandButton value="Enviar" update="growl" action="#{postularPregunta.postulaPregunta()}" 
+                                                 oncomplete="handlePostRequest(xhr, status, args)"/>
+                                <p:commandButton value="Regresar" action="#{postularPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
+                            </p:panel>
+                        </h:form>
                     </div>
-                    <div class="ui-g-2">Empty</div>
+                    <div class="ui-g-2">
+                        
+                            
+                    </div>
                 </div>
             </h:form>
             
