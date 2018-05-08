@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <title>Inicio</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="InicioAdminIH">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 1025px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="buscar"/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-2">
+                <h:panelGrid columns="1" style="padding-left: 60px">
+                    <p:commandButton value="Ver Usuarios" action= "#{cRUDUsuario.recarga()}" style="vertical-align: middle"/>
+                </h:panelGrid>
+            </div>
+            <div class="ui-g-8">
+                <h:form id="usuariosForm">
+                    <p:dataTable id="usuariosTable" var="usuario"
+                                 value="#{cRUDUsuario.usuarios}" paginator="true" rows="10"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="5,10,15" paginatorPosition="bottom">
+                        <p:column headerText="Nombre" style="width: 20%" >
+                            <h:outputText value="#{usuario.nombre}"/>
+                        </p:column>
+                        <p:column headerText="Correo" style="width: 45%">
+                            <h:outputText value="#{usuario.correo}" />
+                        </p:column>
+                        <p:column headerText="Administrador" style="text-align: center; width: 15%">
+                            <h:outputText value="#{usuario.admin()}"/>
+                        </p:column>
+                        <p:column headerText="Verificado" style="text-align: center; width: 15%">
+                            <h:outputText value="#{usuario.verificado()}"/>
+                        </p:column>
+                        <p:column style="width: 5%">
+                            <p:commandButton icon="ui-icon-trash"
+                                title="Eliminar"
+                                actionListener="#{cRUDUsuario.elimina(usuario)}"
+                                ajax="false"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                
+            </div>
+        </div>        
+    </h:body>
+</html>

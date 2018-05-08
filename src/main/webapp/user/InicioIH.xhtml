@@ -14,7 +14,7 @@
             <p:menubar>
                     <f:facet name="options">
                         <h:commandLink action="InicioIH">
-                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 1025px; vertical-align: middle"/>
                         </h:commandLink>
                         <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
                         <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
@@ -24,9 +24,18 @@
             </p:menubar>
         </h:form>
         <div class="ui-g">
-            <div class="ui-g-2"><p style="font-family: sans-serif">Bienvenido, #{user.nombre}</p></div>
+            <div class="ui-g-2">
+                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
+                    <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
+                    <p:commandButton value="Mi Perfil" action= "verUsuario" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Preguntas" action= "verUsuario" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Respuestas" action= "verUsuario" style="vertical-align: middle"/>
+                </h:panelGrid>
+            </div>
             <div class="ui-g-6">
-               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="9"
+               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="7"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,15,20">
@@ -56,7 +65,7 @@
                         <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
                     </h:form>
             </div>
-            <div class="ui-g-2"></div>
+            <div class="ui-g-2"><p style="font-family: sans-serif">Bienvenido, #{user.nombre}</p></div>
             <div class="ui-g-2"></div>
         </div>        
     </h:body>

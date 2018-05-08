@@ -105,16 +105,16 @@ public class UsuarioDAO {
     }
     
     /**
-     * Método por ser implementado en la segunda iteración
+     * 
      * @param id del usuario que se desea eliminar
      */
-    public void elimina(String id){
+    public void elimina(Usuario u){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            
-            String hql = "from Usuario where idE = " + id; //Corregir esta consulta
+            String id = String.valueOf(u.getIdusuario());
+            String hql = "from Usuario where idusuario = " + id; 
             
             Query query = session.createQuery(hql);
             
