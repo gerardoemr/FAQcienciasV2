@@ -49,13 +49,14 @@ and open the template in the editor.
                 <p:panel widgetVar="dlg" header="Recuperar Contraseña" style="width: 450px">                    
                     <h:outputText value ="Introduzca su correo:"/>
                     <br/>
-                    <h:inputText style="width: 350px" id="correo" value="#{registrar.correo}" required="true" requiredMessage="Campo vacío. Ingrese un correo"
+                    <h:inputText style="width: 350px" id="correo" value="#{recuperar.correo}" required="true" requiredMessage="Campo vacío. Ingrese un correo"
                      validatorMessage="Correo inválido. El dominio del correo debe ser @ciencias.unam.mx">
                     <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@ciencias.unam.mx" />
                     </h:inputText>
                     <p:message for="correo" display="icon" />                                 
                     <br/>
-                    <p:commandButton value="Enviar contraseña" action="MsjRecupera" />
+                    <p:commandButton id="testbutton" value="Enviar Contraseña" action="#{recuperar.recuperar()}" disabled="#{recuperar.desactivado}" update="testbutton">
+                    </p:commandButton>
                 </p:panel>
             </h:form>
         </div>

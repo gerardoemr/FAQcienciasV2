@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+import java.io.Serializable;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -13,7 +14,7 @@ import modelo.UsuarioDAO;
 
 @ManagedBean
 @ViewScoped
-public class Registrar {
+public class Registrar implements Serializable {
 
      private int idusuario;
      private String nombre;
@@ -70,8 +71,6 @@ public class Registrar {
     public void setAceptado(Boolean aceptado) {
         this.aceptado = aceptado;
     }
-    
-    
 
     public String getContrasena() {
         return contrasena;
@@ -80,7 +79,6 @@ public class Registrar {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-
     
     public String agregaUsuario(){
         administrador = false;
