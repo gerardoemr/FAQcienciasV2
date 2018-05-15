@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public class Usuario  implements java.io.Serializable {
 
-
      private int idusuario;
      private String nombre;
      private Date fechanac;
@@ -25,7 +24,6 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
-	
     public Usuario(int idusuario, String nombre, Date fechanac, String correo, String contrasena) {
         this.idusuario = idusuario;
         this.nombre = nombre;
@@ -44,7 +42,6 @@ public class Usuario  implements java.io.Serializable {
        this.preguntas = preguntas;
        this.respuestas = respuestas;
     }
-    
     
     public Usuario(String nombre,Date fechanac,String correo,Boolean administrador,String contrasena,Boolean aceptado){
         this.nombre = nombre;
@@ -118,7 +115,16 @@ public class Usuario  implements java.io.Serializable {
     public void setRespuestas(Set respuestas) {
         this.respuestas = respuestas;
     }
-
+    
+    public String admin(){
+        String s = (this.administrador)? "Sí":"No";
+        return s;
+    }
+    
+    public String verificado(){
+        String s = (this.aceptado)? "Sí":"No";
+        return s;
+    }
 }
 
 

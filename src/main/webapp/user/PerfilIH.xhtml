@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <title>Perfil</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="InicioIH">
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 1025px; vertical-align: middle"/>
+                        </h:commandLink>
+                        <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="buscar"/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <div class="ui-g">
+            <div class="ui-g-2">
+                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
+                    <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
+                    <p:commandButton value="Crear Pregunta" action= "verUsuario" style="vertical-align: middle"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
+                    <p:commandButton value="Mi Perfil" action= "PerfilIH" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Preguntas" action= "InicioIH" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Respuestas" action= "InicioIH" style="vertical-align: middle"/>
+                </h:panelGrid>
+            </div>
+            
+            <div class="ui-g-6">
+                <h:form id="form">
+                    <h:panelGrid columns="2" style="width:60%" columnClasses="logo,detail">
+                        <h:graphicImage value="/images/perfil.png" />   
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Nombre:" />
+                                <h:outputText value="#{user.nombre}" style="font-weight: bold"/>
+
+                                <h:outputText value="Correo:" />
+                                <h:outputText value="#{user.correo}" style="font-weight: bold"/>
+
+                                <h:outputText value="Password:" />
+                                <h:outputText value="#{user.contrasena}" style="font-weight: bold"/>
+                                
+                                <h:outputText value="Fecha de Nacimiento:" />
+                                <h:outputText value="#{user.fechanac}" style="font-weight: bold"/>      
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        
+                        <p:commandButton value="Eliminar Perfil" action="InicioIH" style="width: 90%; margin-left: 12px"
+                                         onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+            <div class="ui-g-2"></div>
+            <div class="ui-g-2"></div>
+        </div>        
+    </h:body>
+</html>

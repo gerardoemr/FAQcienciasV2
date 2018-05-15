@@ -15,6 +15,7 @@ import modelo.Pregunta;
 import modelo.PreguntaDAO;
 import modelo.Respuesta;
 import modelo.RespuestaDAO;
+import modelo.Usuario;
 
 //Etiqueta para decirle a jsf que esta clase es un controlador
 @ManagedBean
@@ -67,7 +68,17 @@ public class BuscarEntrada implements Serializable {
                 preguntasResult.add(p);
             }
         }
-        return "ResultadosIH?faces-redirect=true";
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        Usuario u = (Usuario) context.getExternalContext().getSessionMap().get("user");
+        String s;
+        if(u == null){
+            s = "ResultadosIH?faces-redirect=true";
+        }
+        else{
+            s = "/user/ResultadosIH?faces-redirect=true";
+        }
+        return s;
     }
 
     public List<Pregunta> getPreguntasResult() {

@@ -9,7 +9,7 @@
         <title>Principal</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
-    <h:body style="background-color: #484242">
+    <h:body>
         <h:form>  
             <p:menubar>
                 <f:facet name="options">
@@ -25,9 +25,9 @@
             </p:menubar>
         </h:form>
             <div class="ui-g">
-                <div class="ui-g-2">Empty</div>
+                <div class="ui-g-2"></div>
                 <div class="ui-g-6">
-                    <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="10"
+                    <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="7"
                                 paginator="true"
                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                 rowsPerPageTemplate="10,15,20">
@@ -58,14 +58,8 @@
                         <p:commandButton value="Postular Pregunta" action="LoginIH"/>
                     </h:form>
                 </div>
-                <div class="ui-g-2">SideBar</div>
-                <div class="ui-g-2">Empty</div>
+                <div class="ui-g-2"></div>
+                <div class="ui-g-2"></div>
             </div>
-        <div class="ui-g" style="position: relative;background-color: black;width:100%;height:50px;margin-bottom:0px;">
-            <div class="container text-right">
-                <div id="socialMedia">
-                </div>
-            </div>
-        </div>
     </h:body>
 </html>
