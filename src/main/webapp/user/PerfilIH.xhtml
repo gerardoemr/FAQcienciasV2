@@ -56,7 +56,7 @@
                             </h:panelGrid>
                         </p:outputPanel>
                         
-                        <p:commandButton value="Eliminar Perfil" action="InicioIH" style="width: 90%; margin-left: 12px"
+                        <p:commandButton value="Eliminar Perfil" action="#{cRUDUsuario.eliminaPerfil(user)}" style="width: 90%; margin-left: 12px"
                                          onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
                     </h:panelGrid>
                 </h:form>

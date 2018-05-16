@@ -142,15 +142,6 @@ public class UsuarioDAO {
             
             Usuario em = l.get(0);//objeto que representa el usuario a eliminar
             
-           
-            /*
-            tr = session.getTransaction();
-            tr.begin();
-            updateQuery.executeUpdate();
-            tr.commit;
-            */
-            
-            
             session.delete(em);
             
             tx.commit();

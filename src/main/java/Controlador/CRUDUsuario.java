@@ -52,4 +52,18 @@ public class CRUDUsuario {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
+    
+    /**
+     * Método que elimina al usuario u de la base de datos, cierra la sesión 
+     * y redirecciona a la página index. El usuario u se convierte en visitante.
+     * @param u
+     * @return cadena que redirecciona a la página index.
+     * @throws IOException 
+     */
+    public String eliminaPerfil(Usuario u) throws IOException{
+        UsuarioDAO dao = new UsuarioDAO();
+        dao.elimina(u);
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index?faces-redirect=true";
+    }
 }
