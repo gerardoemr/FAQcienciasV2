@@ -31,7 +31,7 @@ public class UsuarioDAO {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
-            //iniciamos la transaccion, la consulta a realizar
+            //iniciamos la transacción
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
             String hql = "from Usuario";
@@ -105,7 +105,8 @@ public class UsuarioDAO {
     }
     
     /**
-     * 
+     * Método que elimina un usuario de la base de datos.
+     * Las preguntas y respuestas hechas por el usuario que se va a eliminar se le asignan a admin.
      * @param id del usuario que se desea eliminar
      */
     public void elimina(Usuario u){
@@ -118,9 +119,37 @@ public class UsuarioDAO {
             
             Query query = session.createQuery(hql);
             
-            List<Usuario> l = query.list();
+            Query admin = session.createQuery("from Usuario where idusuario = 3");
             
-            Usuario em = l.get(0);
+            Query preguntas = session.createQuery("from Pregunta where idusuario = " + id);
+            Query respuestas = session.createQuery("from Respuesta where idusuario = " + id);
+            
+            List<Usuario> l = query.list(); //lista que contiene el usuario a eliminar
+            List<Usuario> a = admin.list(); //lista que contiene al administrador
+            
+            List<Pregunta> p = preguntas.list(); //lista que contiene las preguntas hechas por el usuario.
+            List<Respuesta> r = respuestas.list(); // lista que contiene las respuestas hechas por el usuario.
+
+            Usuario nuevo = a.get(0);//objeto que representa al administrador
+            
+            for(Pregunta x: p){
+                x.setUsuario(nuevo);//asigna las preguntas del usuario al administrador
+            }
+            
+            for(Respuesta x: r){
+                x.setUsuario(nuevo);//asigna las respuestas del usuario al administrador
+            }
+            
+            Usuario em = l.get(0);//objeto que representa el usuario a eliminar
+            
+           
+            /*
+            tr = session.getTransaction();
+            tr.begin();
+            updateQuery.executeUpdate();
+            tr.commit;
+            */
+            
             
             session.delete(em);
             
