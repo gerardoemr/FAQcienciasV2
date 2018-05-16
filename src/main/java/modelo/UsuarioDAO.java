@@ -58,6 +58,7 @@ public class UsuarioDAO {
      */
     public Usuario busca(String correo) {
         Usuario result = null;
+        String c = "'";
         // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -65,7 +66,7 @@ public class UsuarioDAO {
             //iniciamos la transaccion, la consulta a realizar
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
-            String hql = " from Usuario where correo like '%"+correo+"%'";
+            String hql = " from Usuario where correo = "+c+correo+c;
             Query query = session.createQuery(hql);
             //query.setParameter("correo", correo);
             result = (Usuario)query.uniqueResult();
@@ -106,8 +107,8 @@ public class UsuarioDAO {
     
     /**
      * Método que elimina un usuario de la base de datos.
-     * Las preguntas y respuestas hechas por el usuario que se va a eliminar se le asignan a admin.
-     * @param id del usuario que se desea eliminar
+     * Las preguntas y respuestas hechas por el usuario se le asignan a admin.
+     * @param u Usuario que será eliminado
      */
     public void elimina(Usuario u){
         Session session = sessionFactory.openSession();
