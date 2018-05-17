@@ -26,22 +26,33 @@
         <div class="ui-g">
             <div class="ui-g-2">Empty</div>
             <div class="ui-g-8">
-               <p:dataTable value="#{verRespuesta.respuestas}" var="respuesta" rows="10"
+               <p:dataTable value="#{verRespuesta.respuestas()}" var="respuesta" rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,15,20">
                    <p:column headerText="Repuestas">
                         <p:fieldset legend="#{respuesta.titulo}" toggleable="true" collapsed="true">
-                                <p:panelGrid columns="2">
-                                    <h:outputText value="Detalles: " />
-                                    <h:outputText value="#{respuesta.detalles}" />
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Detalles: " />
+                                <h:outputText value="#{respuesta.detalles}" />
                                     
-                                    <h:outputText value="Usuario:" />
-                                    <h:outputText value="#{respuesta.usuario.nombre}" />
+                                <h:outputText value="Usuario:" />
+                                <h:outputText value="#{respuesta.usuario.nombre}" />
                                     
-                                    <h:outputText value="Fecha:" />
-                                    <h:outputText value="#{respuesta.fecha}" />
-                                </p:panelGrid>
+                                <h:outputText value="Fecha:" />
+                                <h:outputText value="#{respuesta.fecha}" />
+                            </p:panelGrid>
+                            <br/>
+                            <h:form>
+                                <p:commandButton value="Actualizar Respuesta" 
+                                                 action="#{actualizarRespuesta.editarRespuesta(respuesta)}"
+                                                 rendered="#{actualizarRespuesta.esDelUsuario(respuesta)}"/>
+                                <p:commandButton value="Eliminar Pregunta" 
+                                                 actionListener="#{eliminarRespuesta.eliminaRespuesta(respuesta)}"
+                                                 ajax="false"
+                                                 onclick="if (! confirm('¿Estás seguro? La respuesta sera eliminada permanentemente.')) return false"
+                                                 rendered="#{actualizarRespuesta.esDelUsuario(respuesta)}"/>
+                            </h:form>
                         </p:fieldset>
                     </p:column>
                 </p:dataTable> 

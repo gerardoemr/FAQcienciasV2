@@ -25,6 +25,7 @@ public class Respuesta  implements java.io.Serializable {
         this.pregunta = pregunta;
         this.usuario = usuario;
         this.titulo = titulo;
+        this.detalles = detalles;
         this.fecha = fecha;
     }
     public Respuesta(int idrespuesta, Pregunta pregunta, Usuario usuario, String titulo, String detalles, Date fecha) {

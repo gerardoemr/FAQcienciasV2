@@ -114,12 +114,6 @@ public class PostularRespuesta {
          String s =  (respuestaValida) ? "/user/VerificacionDelSistema": null;
          return s;
      }
-    
-    public String regreso() {
-        pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
-        return "InicioIH";
-    }
      
     private boolean verificaTitulo(String r) {
         return !(r == null || r.length() < 4);

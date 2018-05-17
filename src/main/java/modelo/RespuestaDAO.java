@@ -40,7 +40,47 @@ public class RespuestaDAO {
            session.close();
         }
     }
-
+    
+    public void update(Respuesta p) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+           tx = session.beginTransaction();
+         
+           session.update(p);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){ 
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+    }
+    
+    public void delete(Respuesta p) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+           tx = session.beginTransaction();
+         
+           session.delete(p);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){ 
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+    }
+    
     public List<Respuesta> respuestas(Pregunta p) {
         List<Respuesta> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -83,6 +123,36 @@ public class RespuestaDAO {
                     + " select r.pregunta.idpregunta from Respuesta as  r"
                     + " where r.titulo like '%"+ busqueda +"%'"
                     + " or r.detalles like '%"+ busqueda +"%')";
+            Query query = session.createQuery(hql);
+            result = (List<Pregunta>)query.list();
+            tx.commit();
+        }
+        catch (Exception e) {
+            //si hay un problema regresamos la base aun estado antes de la consulta
+            if (tx!=null){
+                tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+            //cerramos la session
+            session.close();
+        }
+        return result;
+    }
+    
+        public List<Pregunta> preguntas(int idusuario){
+        List<Pregunta> result = null;
+        // arbrimos la sesion son sessionFactory 
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            //iniciamos la transaccion, la consulta a realizar
+            tx = session.beginTransaction();
+            //Escribimos la consulta en HQL
+            String hql = "select p from Pregunta as p"
+                    + " where p.idpregunta in ( "
+                    + " select r.pregunta.idpregunta from Respuesta as  r"
+                    + " where idusuario="+ idusuario + ")";
             Query query = session.createQuery(hql);
             result = (List<Pregunta>)query.list();
             tx.commit();

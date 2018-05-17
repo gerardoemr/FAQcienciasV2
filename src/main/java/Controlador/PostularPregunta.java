@@ -100,7 +100,8 @@ public class PostularPregunta {
          
          activa = true;
          fecha = new Date();
-         Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
+         vistas = 0;
+         Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,vistas,activa);
          if (verificaTitulo(titulo)) {
             preguntaValida = true;
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Pregunta valida", "");
@@ -117,14 +118,6 @@ public class PostularPregunta {
          String s =  (preguntaValida) ? "/user/VerificacionDelSistema": null;
          return s;
      }
-        
-    /**
-     * Metodo que nos regresa a la paguina de inicio 
-     * @return la direccion de la paguina de inicio
-     */
-    public String regreso() {
-        return "InicioIH";
-    }
      
     private boolean verificaTitulo(String p) {
         return !(p == null || p.length() < 4);
