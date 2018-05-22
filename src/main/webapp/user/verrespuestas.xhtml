@@ -47,11 +47,16 @@
                                 <p:commandButton value="Actualizar Respuesta" 
                                                  action="#{actualizarRespuesta.editarRespuesta(respuesta)}"
                                                  rendered="#{actualizarRespuesta.esDelUsuario(respuesta)}"/>
-                                <p:commandButton value="Eliminar Pregunta" 
+                                <p:commandButton value="Eliminar Respuesta" 
                                                  actionListener="#{eliminarRespuesta.eliminaRespuesta(respuesta)}"
                                                  ajax="false"
                                                  onclick="if (! confirm('¿Estás seguro? La respuesta sera eliminada permanentemente.')) return false"
                                                  rendered="#{actualizarRespuesta.esDelUsuario(respuesta)}"/>
+                                <p:commandButton value="Eliminar Respuesta" 
+                                                 actionListener="#{eliminarRespuesta.eliminaRespuesta(respuesta)}"
+                                                 ajax="false"
+                                                 onclick="if (! confirm('¿Estás seguro? La respuesta sera eliminada permanentemente.')) return false"
+                                                 rendered="#{user.administrador and !actualizarRespuesta.esDelUsuario(respuesta)}"/>
                             </h:form>
                         </p:fieldset>
                     </p:column>

@@ -56,7 +56,11 @@
                             </p:panelGrid>
                             <br/>
                             <h:form>
-                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}" />
+                                <p:commandButton value="Eliminar" action="#{verRespuesta.listarRespuestas(pregunta)}" rendered="#{user.administrador}"
+                                                 actionListener="#{eliminarPregunta.eliminaPregunta(pregunta)}"
+                                                 ajax="false"
+                                                 onclick="if (! confirm('¿Estás seguro? La pregunta sera eliminada con todas sus respuestas.')) return false"/>
                             </h:form>
                         </p:fieldset>
                    </p:column>
