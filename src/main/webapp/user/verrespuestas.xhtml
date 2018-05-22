@@ -37,7 +37,9 @@
                                     <h:outputText value="#{respuesta.detalles}" />
                                     
                                     <h:outputText value="Usuario:" />
-                                    <h:outputText value="#{respuesta.usuario.nombre}" />
+                                    <h:form>
+                                        <p:commandLink value="#{respuesta.usuario.nombre}" action="#{verUsuario.darUsuario(respuesta.usuario)}" />
+                                    </h:form>
                                     
                                     <h:outputText value="Fecha:" />
                                     <h:outputText value="#{respuesta.fecha}" />
