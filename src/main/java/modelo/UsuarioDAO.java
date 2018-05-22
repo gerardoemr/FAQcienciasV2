@@ -170,7 +170,27 @@ public class UsuarioDAO {
      * @param con
      * @param pres 
      */
-    public void actualiza(String id, String n, String of, Date fun, Short empl, String con, String pres){
+    public void actualiza(Usuario u){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+           tx = session.beginTransaction();
+         
+           session.update(u);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){ 
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+    
+    }
+    public void actualizaat(String id, String n, String of, Date fun, Short empl, String con, String pres){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {

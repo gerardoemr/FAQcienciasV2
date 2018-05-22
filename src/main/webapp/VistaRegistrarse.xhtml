@@ -30,7 +30,7 @@
                 <div class="ui-g-4">
                     <h:form>      
                         <p:messages id="msgs" autoUpdate ="true" />
-                        <p:panel widgetVar="dlg" header="Registro" style="width: 85%">
+                        <p:panel widgetVar="dlg" header="Registro" style="width: 450px">
                             <h:outputText value ="Introduzca los siguientes datos para registrarse:"/>
                             <br/><br/>
                             <h:outputText value="Nombre:" />
@@ -60,6 +60,7 @@
                             <p:message for="contrasena" display="icon" />
                             <br/><br/>
                             <p:commandButton value=" Registrarse " action="#{registrar.agregaUsuario()}" />
+                            <p:commandButton icon="ui-icon-arrowreturnthick-1-w" value=" Regresar " action="index" />
                         </p:panel>
                     </h:form>
                 </div>
