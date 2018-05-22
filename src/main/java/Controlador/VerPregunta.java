@@ -32,6 +32,10 @@ public class VerPregunta {
     public void ver() {
         PreguntaDAO lib = new PreguntaDAO();
         preguntas= lib.preguntas();
-}
-
+    }
+    
+    public List<Pregunta> preguntasUsuario(int idusuario) {
+        PreguntaDAO pd = new PreguntaDAO();
+        return pd.preguntas(idusuario);
+    }
 }

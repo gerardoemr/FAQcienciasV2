@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"> 
     <h:head>
-        <title>Inicio</title>
+        <title>Mis preguntas</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
@@ -35,7 +35,7 @@
                 </h:panelGrid>
             </div>
             <div class="ui-g-6">
-               <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="7"
+               <p:dataTable value="#{verPregunta.preguntasUsuario(user.idusuario)}" var="pregunta" rows="7"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="10,15,20">
@@ -46,10 +46,8 @@
                                 <h:outputText value="#{pregunta.detalles}" />
 
                                 <h:outputText value="Usuario:" />
-                                <h:form>
-                                    <p:commandLink value="#{pregunta.usuario.nombre}" action="#{verUsuario.darUsuario(pregunta.usuario)}" />
-                                </h:form>
-                                    
+                                <h:outputText value="#{pregunta.usuario.nombre}" />
+
                                 <h:outputText value="Fecha:" />
                                 <h:outputText value="#{pregunta.fecha}" />
 
@@ -58,8 +56,9 @@
                             </p:panelGrid>
                             <br/>
                             <h:form>
-                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}" />
-                                <p:commandButton value="Eliminar" action="#{verRespuesta.listarRespuestas(pregunta)}" rendered="#{user.administrador}"
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                                <p:commandButton value="Actualizar Pregunta" action="#{actualizarPregunta.editarPregunta(pregunta)}"/>
+                                <p:commandButton value="Eliminar Pregunta" 
                                                  actionListener="#{eliminarPregunta.eliminaPregunta(pregunta)}"
                                                  ajax="false"
                                                  onclick="if (! confirm('¿Estás seguro? La pregunta sera eliminada con todas sus respuestas.')) return false"/>

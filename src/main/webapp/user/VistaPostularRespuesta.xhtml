@@ -9,6 +9,17 @@
         <h:head>
             <title>Respuestas</title>
             <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+            <script type="text/javascript">
+                    function handlePostRequest(xhr, status, args) {
+                        if(args.validationFailed || !args.respuestaValida) {
+                            PF('dlg').jq.effect("shake", {times:5}, 100);
+                        }
+                        else {
+                            PF('dlg').hide();
+                            $('#postResLink').fadeOut();
+                        }
+                    }
+                </script>
         </h:head>
 
         <h:body>
@@ -30,20 +41,23 @@
                     <div class="ui-g-2">Empty</div>
                     <div class="ui-g-8">
                         <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
-                        <p:panel id="panel" header="Postular Respuesta">
-                            <p:messages id="msgs" />
-                            <h:outputText value="Respuesta: " />
-                            <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
-                                <f:validateLength minimum="3" />
-                            </p:inputText> <p:message for="respuesta" display="icon" />
-                            <br/>
-                            <h:outputText value="Detalles: " />
-                            <br/>
-                            <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
-                            <br/><br/>
-                            <p:commandButton value="Enviar" update="panel" action="#{postularRespuesta.postulaRespuesta()}" />
-                            <p:commandButton value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}" icon="ui-icon-arrowreturnthick-1-w" />
-                        </p:panel>
+                        <h:form>
+                            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                            
+                            <p:panel id="panel" widgetVar="dlg" header="Postular Respuesta">
+                                <h:outputText value="Respuesta: " />
+                                <p:inputText id="respuesta" value="#{postularRespuesta.titulo}" label="Respuesta">
+                                </p:inputText> 
+                                <br/>
+                                <h:outputText value="Detalles: " />
+                                <br/>
+                                <p:inputTextarea value="#{postularRespuesta.detalles}" autoResize="true" style="width: 500px"/>
+                                <br/><br/>
+                                <p:commandButton value="Enviar" update="growl" action="#{postularRespuesta.postulaRespuesta()}"
+                                                 oncomplete="handlePostRequest(xhr, status, args)"/>
+                                <p:commandButton value="Regresar" action="#{verRespuesta.listarRespuestas(postularRespuesta.pregunta)}" icon="ui-icon-arrowreturnthick-1-w" />
+                            </p:panel>
+                        </h:form>
                     </div>
                     <div class="ui-g-2">Empty</div>
                 </div>

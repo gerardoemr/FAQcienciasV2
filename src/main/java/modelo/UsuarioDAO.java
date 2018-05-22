@@ -31,7 +31,7 @@ public class UsuarioDAO {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
-            //iniciamos la transaccion, la consulta a realizar
+            //iniciamos la transacción
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
             String hql = "from Usuario";
@@ -58,6 +58,7 @@ public class UsuarioDAO {
      */
     public Usuario busca(String correo) {
         Usuario result = null;
+        String c = "'";
         // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -65,7 +66,7 @@ public class UsuarioDAO {
             //iniciamos la transaccion, la consulta a realizar
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
-            String hql = " from Usuario where correo like '%"+correo+"%'";
+            String hql = " from Usuario where correo = "+c+correo+c;
             Query query = session.createQuery(hql);
             //query.setParameter("correo", correo);
             result = (Usuario)query.uniqueResult();
@@ -105,8 +106,9 @@ public class UsuarioDAO {
     }
     
     /**
-     * 
-     * @param id del usuario que se desea eliminar
+     * Método que elimina un usuario de la base de datos.
+     * Las preguntas y respuestas hechas por el usuario se le asignan a admin.
+     * @param u Usuario que será eliminado
      */
     public void elimina(Usuario u){
         Session session = sessionFactory.openSession();
@@ -118,9 +120,28 @@ public class UsuarioDAO {
             
             Query query = session.createQuery(hql);
             
-            List<Usuario> l = query.list();
+            Query admin = session.createQuery("from Usuario where idusuario = 3");
             
-            Usuario em = l.get(0);
+            Query preguntas = session.createQuery("from Pregunta where idusuario = " + id);
+            Query respuestas = session.createQuery("from Respuesta where idusuario = " + id);
+            
+            List<Usuario> l = query.list(); //lista que contiene el usuario a eliminar
+            List<Usuario> a = admin.list(); //lista que contiene al administrador
+            
+            List<Pregunta> p = preguntas.list(); //lista que contiene las preguntas hechas por el usuario.
+            List<Respuesta> r = respuestas.list(); // lista que contiene las respuestas hechas por el usuario.
+
+            Usuario nuevo = a.get(0);//objeto que representa al administrador
+            
+            for(Pregunta x: p){
+                x.setUsuario(nuevo);//asigna las preguntas del usuario al administrador
+            }
+            
+            for(Respuesta x: r){
+                x.setUsuario(nuevo);//asigna las respuestas del usuario al administrador
+            }
+            
+            Usuario em = l.get(0);//objeto que representa el usuario a eliminar
             
             session.delete(em);
             
@@ -149,7 +170,27 @@ public class UsuarioDAO {
      * @param con
      * @param pres 
      */
-    public void actualiza(String id, String n, String of, Date fun, Short empl, String con, String pres){
+    public void actualiza(Usuario u){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+           tx = session.beginTransaction();
+         
+           session.update(u);
+           
+           tx.commit();
+        }
+        catch (Exception e) {
+           if (tx!=null){ 
+               tx.rollback();
+           }
+           e.printStackTrace(); 
+        }finally {
+           session.close();
+        }
+    
+    }
+    public void actualizaat(String id, String n, String of, Date fun, Short empl, String con, String pres){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {

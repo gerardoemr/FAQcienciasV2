@@ -46,20 +46,18 @@ and open the template in the editor.
         <div class="ui-g-4">
             <h:form>            
                 <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
-                <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 450px">
+                
+                <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 90%">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="correo" value="Correo:" />
-                        <p:inputText id="correo" value="#{login.correo}" label="correo" />
+                        <p:inputText id="correo" value="#{login.correo}" label="correo" style="width: 350px"/>
 
                         <h:outputLabel for="contrasena" value="Contraseña:" />
-                        <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" />
+                        <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" style="width: 350px" />
 
                         <f:facet name="footer">
                             <p:commandButton value="Login" update="growl" action="#{login.login}"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
-                            
-                            
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />                 
                             <h:link value="¿Olvidaste la contraseña?" outcome="RecuperaIH" style="font-size: 15px"></h:link>
                         </f:facet>
                     </h:panelGrid>

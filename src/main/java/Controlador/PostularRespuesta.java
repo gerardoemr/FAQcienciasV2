@@ -6,6 +6,7 @@
 package Controlador;
 
 import java.util.Date;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -13,6 +14,7 @@ import modelo.Pregunta;
 import modelo.Respuesta;
 import modelo.RespuestaDAO;
 import modelo.Usuario;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -87,32 +89,33 @@ public class PostularRespuesta {
      * @return - el direccionamiento de la vista.
      */
     public String postulaRespuesta() {
+         boolean respuestaValida;
+         FacesMessage message;
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
-         if(usuario == null) {
-             return "/LoginIH";
-         }
+
          fecha = new Date();
          
          Respuesta respuesta = new Respuesta(pregunta,usuario,titulo,detalles,fecha);
          if (verificaTitulo(titulo)) {
-            //Falta una verificacion de los detalles
+            respuestaValida = true;
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Respuesta valida", "");
             RespuestaDAO pd = new RespuestaDAO();
             pd.insert(respuesta);
          } else{
-            return "VistaPostularRespuesta";
+            respuestaValida = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Respuesta invalida", "No puede haber menos de 4 caracteres en una respuesta");
          }
          
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
-         return "VerificacionDelSistema";
+         
+         FacesContext.getCurrentInstance().addMessage(null, message);
+         PrimeFaces.current().ajax().addCallbackParam("respuestaValida", respuestaValida);
+         if (respuestaValida)
+             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
+         String s =  (respuestaValida) ? "/user/VerificacionDelSistema": null;
+         return s;
      }
-    
-    public String regreso() {
-        pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("pregunta");
-        return "InicioIH";
-    }
      
     private boolean verificaTitulo(String r) {
-        return !(r == null || r.length() < 3);
+        return !(r == null || r.length() < 4);
     }
 }

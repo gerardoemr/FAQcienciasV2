@@ -6,12 +6,14 @@
 package Controlador;
 
 import java.util.Date;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import modelo.Pregunta;
 import modelo.PreguntaDAO;
 import modelo.Usuario;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -92,31 +94,32 @@ public class PostularPregunta {
      * @return el direccionanmiento de la vista.
      */
     public String postulaPregunta() {
+         boolean preguntaValida;
+         FacesMessage message;
          usuario =(Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
          
          activa = true;
          fecha = new Date();
-         Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,activa);
+         vistas = 0;
+         Pregunta pregunta = new Pregunta(usuario,titulo,detalles,fecha,vistas,activa);
          if (verificaTitulo(titulo)) {
-            //Falta una verificacion de los detalles
+            preguntaValida = true;
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Pregunta valida", "");
             PreguntaDAO pd = new PreguntaDAO();
             pd.insert(pregunta);
          }
          else {
-            return "VistaPostularPregunta";
+            preguntaValida = false;
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Pregunta invalida", "No puede haber menos de 4 caracteres en una pregunta");
          }
-         return "VerificacionDelSistema";
+         
+         FacesContext.getCurrentInstance().addMessage(null, message);
+         PrimeFaces.current().ajax().addCallbackParam("preguntaValida", preguntaValida);
+         String s =  (preguntaValida) ? "/user/VerificacionDelSistema": null;
+         return s;
      }
-        
-    /**
-     * Metodo que nos regresa a la paguina de inicio 
-     * @return la direccion de la paguina de inicio
-     */
-    public String regreso() {
-        return "InicioIH";
-    }
      
     private boolean verificaTitulo(String p) {
-        return !(p == null || p.length() < 3);
+        return !(p == null || p.length() < 4);
     }
 }

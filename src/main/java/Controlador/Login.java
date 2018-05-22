@@ -67,7 +67,7 @@ public class Login implements Serializable{
         String s = null;
          
         if(u!= null){ 
-            if(u.getAceptado()){
+            if(u.getAceptado() ){
                 if(contrasena.equals(u.getContrasena())){ //credenciales válidas
                     loggedIn = true;
                     message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", u.getNombre());//mensaje de bienvenida

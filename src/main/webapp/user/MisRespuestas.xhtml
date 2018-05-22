@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"> 
     <h:head>
-        <title>Perfil</title>
+        <title>Mis respuestas</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
     <h:body>
@@ -27,7 +27,6 @@
             <div class="ui-g-2">
                 <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
                     <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
-                    <p:commandButton value="Crear Pregunta" action= "verUsuario" style="vertical-align: middle"/>
                 </h:panelGrid>
                 <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
                     <p:commandButton value="Mi Perfil" action= "PerfilIH" style="vertical-align: middle"/>
@@ -35,33 +34,38 @@
                     <p:commandButton value="Mis Respuestas" action= "MisRespuestas" style="vertical-align: middle"/>
                 </h:panelGrid>
             </div>
-            
             <div class="ui-g-6">
-                <h:form id="form">
-                    <h:panelGrid columns="2" style="width:60%" columnClasses="logo,detail">
-                        <h:graphicImage value="/images/perfil.png" />   
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="Nombre:" />
-                                <h:outputText value="#{user.nombre}" style="font-weight: bold"/>
+               <p:dataTable value="#{verRespuesta.respuestasUsuario(user.idusuario)}" var="pregunta" rows="7"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="10,15,20">
+                   <p:column headerText="Preguntas">
+                       <p:fieldset legend="#{pregunta.titulo}" toggleable="true" collapsed="true">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="Detalles: " />
+                                <h:outputText value="#{pregunta.detalles}" />
 
-                                <h:outputText value="Correo:" />
-                                <h:outputText value="#{user.correo}" style="font-weight: bold"/>
+                                <h:outputText value="Usuario:" />
+                                <h:outputText value="#{pregunta.usuario.nombre}" />
 
-                                <h:outputText value="Password:" />
-                                <h:outputText value="#{user.contrasena}" style="font-weight: bold"/>
-                                
-                                <h:outputText value="Fecha de Nacimiento:" />
-                                <h:outputText value="#{user.fechanac}" style="font-weight: bold"/>      
-                            </h:panelGrid>
-                        </p:outputPanel>
-                        
-                        <p:commandButton value="Eliminar Perfil" action="#{cRUDUsuario.eliminaPerfil(user)}" style="width: 90%; margin-left: 12px"
-                                         onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
-                    </h:panelGrid>
-                </h:form>
+                                <h:outputText value="Fecha:" />
+                                <h:outputText value="#{pregunta.fecha}" />
+
+                                <h:outputText value="Vistas: " />
+                                <h:outputText value="#{pregunta.vistas}"/>
+                            </p:panelGrid>
+                            <br/>
+                            <h:form>
+                                <p:commandButton value="Ver Respuestas" action="#{verRespuesta.listarRespuestas(pregunta)}"/>
+                            </h:form>
+                        </p:fieldset>
+                   </p:column>
+                </p:dataTable> 
+                    <h:form>
+                        <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    </h:form>
             </div>
-            <div class="ui-g-2"></div>
+            <div class="ui-g-2"><p style="font-family: sans-serif">Bienvenido, #{user.nombre}</p></div>
             <div class="ui-g-2"></div>
         </div>        
     </h:body>

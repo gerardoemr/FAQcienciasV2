@@ -28,8 +28,13 @@ public class VerRespuesta {
         return respuestas;
     }
     
-    
-    
+    public List<Respuesta> respuestas(){
+        pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
+        PreguntaDAO a=new PreguntaDAO();
+        a.aumentarVista(pregunta);
+        RespuestaDAO lib = new RespuestaDAO();
+        return lib.respuestas(pregunta);
+    }
     
     public String listarRespuestas(Pregunta p){
     this.pregunta=p;
@@ -40,5 +45,10 @@ public class VerRespuesta {
      RespuestaDAO lib = new RespuestaDAO();
     respuestas= lib.respuestas(pregunta);
     return "verrespuestas";
+    }
+    
+    public List<Pregunta> respuestasUsuario(int idusuario) {
+        RespuestaDAO rd = new RespuestaDAO();
+        return rd.preguntas(idusuario);
     }
 }
