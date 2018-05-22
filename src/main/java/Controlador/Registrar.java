@@ -98,7 +98,7 @@ public class Registrar implements Serializable{
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);          
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario nuevo", "Has registrado un usuario"));
             String subject = "Registro en FAQciencias";
-            String mensaje = "Te has registrado con \n " +correo+"confirmar en el link \n" +"http://localhost:8084/user/Confirma.xhtml?correo="+u.getCorreo();
+            String mensaje = "Te has registrado con \n " +correo+"confirmar en el link \n" +"http://localhost:8084/Confirma.xhtml?correo="+u.getCorreo();
             Mail mail = new Mail();
             mail.sendMail(subject,mensaje,this.correo);
             this.msg = u.getCorreo();
