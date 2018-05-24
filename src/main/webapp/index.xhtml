@@ -6,17 +6,18 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:pm="http://primefaces.org/mobile">
     <h:head>
+         
         <title>Principal</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
-    <h:body>
+    <h:body  style=" background-image:  url(../images/fondo.jpg) ">
         <h:form>  
             <p:menubar>
                 <f:facet name="options">
                     <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                     </h:commandLink>
-                    <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                    <p:commandButton value="Registro" action= "/VistaRegistrarse?facesRedirect=true" />
                     <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
                     <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
                     <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -10,7 +11,7 @@ import org.hibernate.Transaction;
  *
  * @author Oxium
  */
-public class PreguntaDAO {
+public class PreguntaDAO implements Serializable{
     private SessionFactory sessionFactory;
     
     public PreguntaDAO () {
@@ -171,8 +172,8 @@ public class PreguntaDAO {
             tx = session.beginTransaction();
             //Escribimos la consulta en HQL
             String hql = "from Pregunta as p"+
-                    " where p.titulo like '%"+ busqueda +"%'" +
-                    "or p.detalles like '%"+ busqueda +"%'";
+                    " where lower(p.titulo) like lower('%"+ busqueda +"%')" +
+                    "or lower(p.detalles) like lower('%"+ busqueda +"%')";
             Query query = session.createQuery(hql);
             result = (List<Pregunta>)query.list();
             tx.commit();

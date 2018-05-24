@@ -14,11 +14,11 @@
             <h:form> 
                 <p:menubar>
                     <f:facet name="options">
-                        <h:commandLink action="index">
+                        <h:commandLink action="/index?facesRedirect=true">
                                 <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                         </h:commandLink>
-                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
-                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                        <p:commandButton value="Registro" action= "/VistaRegistrarse?facesRedirect=true" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="/LoginIH?facesRedirect=true" />
                         <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
                         <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
                         <p:defaultCommand target="btn"/>

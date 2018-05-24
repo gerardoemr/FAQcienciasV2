@@ -30,8 +30,8 @@
                 </h:panelGrid>
                 <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
                     <p:commandButton value="Mi Perfil" action= "/user/PerfilIH?facesRedirect=true" style="vertical-align: middle"/>
-                    <p:commandButton value="Mis Preguntas" action= "MisPreguntas" style="vertical-align: middle"/>
-                    <p:commandButton value="Mis Respuestas" action= "MisRespuestas" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Preguntas" action= "/user/MisPreguntas?facesRedirect=true" style="vertical-align: middle"/>
+                    <p:commandButton value="Mis Respuestas" action= "/user/MisRespuestas?facesRedirect=true" style="vertical-align: middle"/>
                 </h:panelGrid>
             </div>
             <div class="ui-g-6">
