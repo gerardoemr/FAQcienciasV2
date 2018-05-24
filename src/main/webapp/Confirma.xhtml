@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+     <f:metadata>
+                <f:viewParam name="correo" value="#{confirmaUsuario.correo}"/>
+                <f:viewAction action="#{confirmaUsuario.obtenUsuario()}"/>
+            </f:metadata>
+        <title>Confirma</title>
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar>
+                    <f:facet name="options">
+                        
+                            <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                        
+                        <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="btn"/>
+                    </f:facet>
+            </p:menubar>
+        </h:form>
+        <p:panel header="Confirmación del Usuario" style="margin-bottom:10px;">
+            Presione confirmar para ser agregado como usuario de FAQCiencias.
+            #{confirmaUsuario.usuario.correo}
+            <br /><br />
+            <p:commandButton action="#{confirmaUsuario.confirmar()}" value="Confirma" rendered="#{!confirmaUsuario.usuario.aceptado}"/>
+            <br /><br />       
+            <p:commandButton value="Cancelar" id="cancelar" action="index?faces-redirect=true"/>
+            <h:link outcome="InicioIH" value="Inicio" />
+        </p:panel>
+    </h:body>
+</html>
