@@ -31,7 +31,6 @@ public class VerRespuesta {
     public List<Respuesta> respuestas(){
         pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
         PreguntaDAO a=new PreguntaDAO();
-        a.aumentarVista(pregunta);
         RespuestaDAO lib = new RespuestaDAO();
         return lib.respuestas(pregunta);
     }
