@@ -24,10 +24,11 @@
 
         <h:body>
             <h:form>
+            <div class="ui-g">
                 <p:menubar>
                         <f:facet name="options">
                             <h:commandLink action="InicioIH">
-                                <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
+                                <h:graphicImage value="/images/logo.png" style="padding-right: 1025px; vertical-align: middle"/>
                             </h:commandLink>
                             <p:commandButton icon="ui-icon-logout" value="Logout" action="#{login.logout}" style="vertical-align: middle" />
                             <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
@@ -35,6 +36,7 @@
                             <p:defaultCommand target="buscar"/>
                         </f:facet>
                 </p:menubar>
+            </div>
             </h:form>
             <h:form>
                 <div class="ui-g">

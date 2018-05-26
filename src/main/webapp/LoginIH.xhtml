@@ -28,18 +28,20 @@ and open the template in the editor.
 
 <h:body>
         <h:form>
-            <p:menubar>
+            <div class="ui-g">
+                <p:menubar>
                     <f:facet name="options">
                         <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                         </h:commandLink>
-                        <p:commandButton value="Registro" action= "VistaRegistrarse" style="vertical-align: middle"/>
-                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" style="vertical-align: middle" />
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
                         <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                        <p:commandButton value="Buscar" id="btn" action="#{buscarEntrada.init()}" />
-                        <p:defaultCommand target="btn"/>
+                        <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="buscar"/>
                     </f:facet>
-            </p:menubar>
+                </p:menubar>
+            </div>
         </h:form>
     <div class="ui-g">
         <div class="ui-g-4"></div>
@@ -61,8 +63,8 @@ and open the template in the editor.
                             <h:link value="¿Olvidaste la contraseña?" outcome="RecuperaIH" style="font-size: 15px"></h:link>
                         </f:facet>
                     </h:panelGrid>
-                     
-                </p:panel>   
+                </p:panel>
+                
             </h:form>
         </div>
         <div class="ui-g-4"></div>
