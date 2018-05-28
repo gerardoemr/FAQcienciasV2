@@ -39,29 +39,29 @@
                 </div>
             </h:form>
             <h:form>
-                <div class="ui-g">
+                <div class="ui-fluid">
                     <div class="ui-g-2">Empty</div>
-                    <div class="ui-g-8">
+                    <div class="ui-g-6">
                         <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
                         <h:form>
                             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                             
                             <p:panel id="panel" widgetVar="dlg" header="Actualizar Respuesta">
-                                <h:outputText value="Respuesta: " />
-                                <p:inputText id="respuesta" value="#{actualizarRespuesta.titulo}" label="Respuesta">
-                                </p:inputText> 
-                                <br/>
-                                <h:outputText value="Detalles: " />
-                                <br/>
-                                <p:inputTextarea value="#{actualizarRespuesta.detalles}" autoResize="true" style="width: 500px"/>
-                                <br/><br/>
-                                <p:commandButton value="Actualizar" update="growl" action="#{actualizarRespuesta.actualizaRespuesta()}"
-                                                 oncomplete="handlePostRequest(xhr, status, args)"/>
-                                <p:commandButton value="Regresar" action="#{verRespuesta.listarRespuestas(actualizarRespuesta.pregunta)}" icon="ui-icon-arrowreturnthick-1-w" />
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
+                                    <h:outputText value="Respuesta: " />
+                                    <p:inputText id="respuesta" value="#{actualizarRespuesta.titulo}" label="Respuesta"/>
+                                    <h:outputText value="Detalles: " />
+                                    <p:inputTextarea value="#{actualizarRespuesta.detalles}" autoResize="true" style="width: 500px"/>
+                                    <p:commandButton value="Actualizar" update="growl" action="#{actualizarRespuesta.actualizaRespuesta()}"
+                                                     oncomplete="handlePostRequest(xhr, status, args)"/>
+                                    <br/>
+                                    <p:commandButton value="Regresar" action="#{verRespuesta.listarRespuestas(actualizarRespuesta.pregunta)}" icon="ui-icon-arrowreturnthick-1-w" />
+                                </p:panelGrid>
                             </p:panel>
                         </h:form>
                     </div>
-                    <div class="ui-g-2">Empty</div>
+                    <div class="ui-g-2"></div>
+                    <div class="ui-g-2"></div>
                 </div>
             </h:form>
         </h:body>
