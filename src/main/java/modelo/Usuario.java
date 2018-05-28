@@ -43,6 +43,17 @@ public class Usuario  implements java.io.Serializable {
         this.contrasena = contrasena;
         this.imagen = imagen;
     }
+    
+    public Usuario(int idusuario, String nombre, Date fechanac, String correo, String contrasena, String imagen, String formato) {
+        this.idusuario = idusuario;
+        this.nombre = nombre;
+        this.fechanac = fechanac;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.imagen = imagen;
+        this.formato = formato;
+    }
+    
     public Usuario(int idusuario, String nombre, Date fechanac, String correo, Boolean administrador, String contrasena, Boolean aceptado, String imagen, String formato, Set preguntas, Set respuestas) {
        this.idusuario = idusuario;
        this.nombre = nombre;

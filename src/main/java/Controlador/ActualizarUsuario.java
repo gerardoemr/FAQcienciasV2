@@ -110,7 +110,7 @@ public class ActualizarUsuario {
      public String actualizarUsuario(Usuario user) {         
          FacesMessage message;
          
-         Usuario usuario = new Usuario (user.getIdusuario(), nombre, fechanac, user.getCorreo(), contrasena,imagen);
+         Usuario usuario = new Usuario (user.getIdusuario(), nombre, fechanac, user.getCorreo(), contrasena,imagen, user.getFormato());
          UsuarioDAO ud = new UsuarioDAO();
          ud.actualiza(usuario);
                      
