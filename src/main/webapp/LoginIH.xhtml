@@ -45,24 +45,26 @@ and open the template in the editor.
         </h:form>
     <div class="ui-g">
         <div class="ui-g-4"></div>
-        <div class="ui-g-4">
+        <div class="ui-fluid">
             <h:form>            
                 <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                 
                 <p:panel id ="panel" widgetVar="dlg" header="Iniciar Sesión" style="width: 90%">
-                    <h:panelGrid columns="2" cellpadding="5">
+                    
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
                         <h:outputLabel for="correo" value="Correo:" />
                         <p:inputText id="correo" value="#{login.correo}" label="correo" style="width: 350px"/>
 
                         <h:outputLabel for="contrasena" value="Contraseña:" />
                         <p:password id="contrasena" value="#{login.contrasena}" label="contrasena" style="width: 350px" />
 
-                        <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" action="#{login.login}"
+                        
+                        <p:commandButton value="Login" update="growl" action="#{login.login}"
                                              oncomplete="handleLoginRequest(xhr, status, args)" />                 
-                            <h:link value="¿Olvidaste la contraseña?" outcome="RecuperaIH" style="font-size: 15px"></h:link>
-                        </f:facet>
-                    </h:panelGrid>
+                        <h:link value="¿Olvidaste la contraseña?" outcome="RecuperaIH" style="font-size: 15px"></h:link>
+                        
+                    </p:panelGrid>
+                    
                 </p:panel>
                 
             </h:form>

@@ -42,32 +42,30 @@
             </h:form>
 
             <h:form>
-                <div class="ui-g">
+                <div class="ui-fluid">
                     <div class="ui-g-2">Empty</div>
-                    <div class="ui-g-8">
+                    <div class="ui-g-6">
                         <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
                         <h:form>
                             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
                             <p:panel id="panel" widgetVar="dlg" header="Postular Pregunta">
-                                <h:outputText value="Pregunta: " />
-                                <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta">
-                                </p:inputText> 
-                                <br/>
-                                <h:outputText value="Detalles: " />
-                                <br/>
-                                <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true" style="width: 500px"/>
-                                <br/><br/>
-                                <p:commandButton value="Enviar" update="growl" action="#{postularPregunta.postulaPregunta()}" 
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
+                                    <h:outputText value="Pregunta: " />
+                                    <p:inputText id="pregunta" value="#{postularPregunta.titulo}" label="Pregunta"/>
+                                    <h:outputText value="Detalles: " />
+                                    <p:inputTextarea value="#{postularPregunta.detalles}" autoResize="true"/>
+                                    <p:commandButton value="Enviar" update="growl" action="#{postularPregunta.postulaPregunta()}" 
                                                  oncomplete="handlePostRequest(xhr, status, args)"/>
-                                <p:commandButton value="Regresar" action="InicioIH" icon="ui-icon-arrowreturnthick-1-w" />
+                                    <br/>
+                                    <p:commandButton value="Regresar" action="InicioIH" icon="ui-icon-arrowreturnthick-1-w" />
+                                </p:panelGrid>
                             </p:panel>
                         </h:form>
                     </div>
-                    <div class="ui-g-2">
-                        
+                    <div class="ui-g-2"></div>
+                    <div class="ui-g-2"></div>
                             
-                    </div>
                 </div>
             </h:form>
             

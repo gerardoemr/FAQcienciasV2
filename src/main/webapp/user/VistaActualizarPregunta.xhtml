@@ -42,31 +42,29 @@
             </h:form>
 
             <h:form>
-                <div class="ui-g">
+                <div class="ui-fluid">
                     <div class="ui-g-2">Empty</div>
-                    <div class="ui-g-8">
+                    <div class="ui-g-6">
                         <!-- Creamos un panel que contendra las entradas que el usuario debe llenar -->
                         <h:form>
                             <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
                             <p:panel id="panel" widgetVar="dlg" header="Actualizar Preguntas">
-                                <h:outputText value="Pregunta: " />
-                                <p:inputText id="pregunta" value="#{actualizarPregunta.titulo}" label="Pregunta"/>
-                                <br/>
-                                <h:outputText value="Detalles: " />
-                                <br/>
-                                <p:inputTextarea value="#{actualizarPregunta.detalles}" autoResize="true" style="width: 500px"/>
-                                <br/><br/>
-                                <p:commandButton value="Actualizar" update="growl" action="#{actualizarPregunta.actualizaPregunta()}" 
-                                                 oncomplete="handlePostRequest(xhr, status, args)"/>
-                                <p:commandButton value="Regresar" action="#{actualizarPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
+                                <p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-7" layout="grid" styleClass="ui-panelgrid-blank">
+                                    <h:outputText value="Pregunta: " />
+                                    <p:inputText id="pregunta" value="#{actualizarPregunta.titulo}" label="Pregunta"/>
+                                    <h:outputText value="Detalles: " />
+                                    <p:inputTextarea value="#{actualizarPregunta.detalles}" autoResize="true"/>
+                                    <p:commandButton value="Actualizar" update="growl" action="#{actualizarPregunta.actualizaPregunta()}" 
+                                                     oncomplete="handlePostRequest(xhr, status, args)"/>
+                                    <br/>
+                                    <p:commandButton value="Regresar" action="#{actualizarPregunta.regreso()}" icon="ui-icon-arrowreturnthick-1-w" />
+                                </p:panelGrid>
                             </p:panel>
                         </h:form>
                     </div>
-                    <div class="ui-g-2">
-                        
-                            
-                    </div>
+                    <div class="ui-g-2"></div>
+                    <div class="ui-g-2"></div>
                 </div>
             </h:form>
             
