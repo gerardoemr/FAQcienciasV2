@@ -12,18 +12,20 @@
     </h:head>
     <h:body>
         <h:form>  
-            <p:menubar>
-                <f:facet name="options">
-                    <h:commandLink action="/index?facesRedirect=true">
+            <div class="ui-g">
+                <p:menubar>
+                    <f:facet name="options">
+                        <h:commandLink action="index">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
-                    </h:commandLink>
-                    <p:commandButton value="Registro" action= "VistaRegistrarse?facesRedirect=true" />
-                    <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH?facesRedirect=true" />
-                    <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
-                    <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
-                    <p:defaultCommand target="buscar"/>
-                </f:facet>
-            </p:menubar>
+                        </h:commandLink>
+                        <p:commandButton value="Registro" action= "VistaRegistrarse" />
+                        <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                        <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
+                        <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
+                        <p:defaultCommand target="buscar"/>
+                    </f:facet>
+                </p:menubar>
+            </div>
         </h:form>
             <div class="ui-g">
                 <div class="ui-g-2"></div>
