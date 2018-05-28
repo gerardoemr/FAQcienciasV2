@@ -1,6 +1,8 @@
 package modelo;
 // Generated May 25, 2018 9:36:04 PM by Hibernate Tools 4.3.1
 
+//Esta es la versión correcta
+
 
 import java.util.Date;
 import java.util.HashSet;
