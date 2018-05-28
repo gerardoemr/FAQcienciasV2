@@ -93,7 +93,8 @@ public class PreguntaDAO implements Serializable{
         Transaction tx = null;
         try {
            tx = session.beginTransaction();
-           p.setVistas(p.getVistas()+1);
+           int x = p.getVistas();    
+           p.setVistas(++x);
            session.update(p);
            
            tx.commit();

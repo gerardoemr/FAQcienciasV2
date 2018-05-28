@@ -13,6 +13,7 @@ import modelo.Respuesta;
 import modelo.RespuestaDAO;
 import javax.faces.context.FacesContext;
 import modelo.PreguntaDAO;
+import modelo.Usuario;
 /**
  *
  * @author Admin
@@ -31,7 +32,6 @@ public class VerRespuesta {
     public List<Respuesta> respuestas(){
         pregunta =(Pregunta) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("pregunta");
         PreguntaDAO a=new PreguntaDAO();
-        a.aumentarVista(pregunta);
         RespuestaDAO lib = new RespuestaDAO();
         return lib.respuestas(pregunta);
     }
@@ -39,11 +39,12 @@ public class VerRespuesta {
     public String listarRespuestas(Pregunta p){
     this.pregunta=p;
     FacesContext context = FacesContext.getCurrentInstance();
-     context.getExternalContext().getSessionMap().put("pregunta", p);
-     PreguntaDAO a=new PreguntaDAO();
-     a.aumentarVista(pregunta);
-     RespuestaDAO lib = new RespuestaDAO();
+    context.getExternalContext().getSessionMap().put("pregunta", p);
+    PreguntaDAO a=new PreguntaDAO();
+    a.aumentarVista(pregunta);
+    RespuestaDAO lib = new RespuestaDAO();
     respuestas= lib.respuestas(pregunta);
+    
     return "verrespuestas";
     }
     

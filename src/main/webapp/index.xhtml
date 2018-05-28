@@ -10,15 +10,15 @@
         <title>Principal</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/favicon.ico"/>
     </h:head>
-    <h:body  style=" background-image:  url(../images/fondo.jpg) ">
+    <h:body>
         <h:form>  
             <p:menubar>
                 <f:facet name="options">
-                    <h:commandLink action="index">
+                    <h:commandLink action="/index?facesRedirect=true">
                             <h:graphicImage value="/images/logo.png" style="padding-right: 900px; vertical-align: middle"/>
                     </h:commandLink>
-                    <p:commandButton value="Registro" action= "/VistaRegistrarse?facesRedirect=true" />
-                    <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH" />
+                    <p:commandButton value="Registro" action= "VistaRegistrarse?facesRedirect=true" />
+                    <p:commandButton icon="ui-icon-login" value="Login" action="LoginIH?facesRedirect=true" />
                     <p:inputText style="margin-right:10px" value="#{buscarEntrada.busqueda}" placeholder="Search" />
                     <p:commandButton id="buscar" value="Buscar" action="#{buscarEntrada.init()}" />
                     <p:defaultCommand target="buscar"/>
@@ -56,7 +56,7 @@
                     </p:dataTable>
                     <br/>
                     <h:form>
-                        <p:commandButton value="Postular Pregunta" action="LoginIH"/>
+                        <p:commandButton value="Postular Pregunta" action="/LoginIH?facesRedirect=true  "/>
                     </h:form>
                 </div>
                 <div class="ui-g-2"></div>

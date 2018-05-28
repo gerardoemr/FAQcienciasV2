@@ -41,7 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="FAQciencias" match-schema="public"/>
-  <table-filter match-name="usuario"/>
   <table-filter match-name="respuesta"/>
+  <table-filter match-name="usuario"/>
   <table-filter match-name="pregunta"/>
 </hibernate-reverse-engineering>

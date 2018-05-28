@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 25, 2018 9:36:04 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="idusuario" type="int">
@@ -25,6 +25,12 @@
         </property>
         <property name="aceptado" type="java.lang.Boolean">
             <column name="aceptado" />
+        </property>
+        <property name="imagen" type="string">
+            <column name="imagen" />
+        </property>
+        <property name="formato" type="string">
+            <column name="formato" />
         </property>
         <set name="preguntas" table="pregunta" inverse="true" lazy="true" fetch="select">
             <key>

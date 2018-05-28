@@ -49,17 +49,31 @@
                                 <h:outputText value="#{user.correo}" style="font-weight: bold"/>
 
                                 <h:outputText value="Password:" />
-                                <h:outputText value="#{user.contrasena}" style="font-weight: bold"/>
+                                <h:inputSecret value="#{user.contrasena}" disabled="true" readonly="true" redisplay="true" style="font-weight: bold"/>
                                 
                                 <h:outputText value="Fecha de Nacimiento:" />
                                 <h:outputText value="#{user.fechanac}" style="font-weight: bold"/>      
                             </h:panelGrid>
                         </p:outputPanel>
-                        
-                        <p:commandButton value="Eliminar Perfil" action="#{cRUDUsuario.eliminaPerfil(user)}" style="width: 90%; margin-left: 12px"
-                                         onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
+ 
                     </h:panelGrid>
+                    <h:form enctype="multipart/form-data">        
+                        <p:growl id="messages" showDetail="true" />
+
+                        <p:fileUpload value="#{fileUploadView.foto}" mode="simple" />
+
+                        <br/> <br/>
+
+                        <p:commandButton value="Cargar" ajax="false"
+                                         actionListener="#{fileUploadView.validaFoto(user)}">
+                        </p:commandButton>
+                    </h:form>
+                    
+                    
+                    <p:commandButton value="Eliminar Perfil" action="#{cRUDUsuario.eliminaPerfil(user)}" style="width: 30%; margin-left: 12px"
+                                         onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
                 </h:form>
+                
             </div>
             <div class="ui-g-2"></div>
             <div class="ui-g-2"></div>

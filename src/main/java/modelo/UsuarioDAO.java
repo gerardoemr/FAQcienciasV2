@@ -113,6 +113,7 @@ public class UsuarioDAO {
     public void elimina(Usuario u){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
+        String c = "'";
         try{
             tx = session.beginTransaction();
             String id = String.valueOf(u.getIdusuario());
@@ -120,7 +121,7 @@ public class UsuarioDAO {
             
             Query query = session.createQuery(hql);
             
-            Query admin = session.createQuery("from Usuario where idusuario = 3");
+            Query admin = session.createQuery(" from Usuario where correo = "+c+"admin@ciencias.unam.mx"+c);
             
             Query preguntas = session.createQuery("from Pregunta where idusuario = " + id);
             Query respuestas = session.createQuery("from Respuesta where idusuario = " + id);
@@ -159,17 +160,6 @@ public class UsuarioDAO {
         }
     }
     
-    /**
-     * Método por ser implementado en la segunda iteración.
-     * Actualiza los atributos de un Usuario en la base de datos.
-     * @param id
-     * @param n
-     * @param of
-     * @param fun
-     * @param empl
-     * @param con
-     * @param pres 
-     */
     public void actualiza(Usuario u){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -188,8 +178,8 @@ public class UsuarioDAO {
         }finally {
            session.close();
         }
-    
     }
+    
     public void actualizaat(String id, String n, String of, Date fun, Short empl, String con, String pres){
         Session session = sessionFactory.openSession();
         Transaction tx = null;

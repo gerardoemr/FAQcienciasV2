@@ -1,5 +1,5 @@
 package modelo;
-// Generated Apr 24, 2018 1:34:24 PM by Hibernate Tools 4.3.1
+// Generated May 25, 2018 9:36:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,10 +20,12 @@ public class Pregunta  implements java.io.Serializable {
      private Integer vistas;
      private boolean activa;
      private Set respuestas = new HashSet(0);
-     
-    public Pregunta(){}
 
-    public Pregunta(Usuario usuario, String titulo,String detalles, Date fecha, Integer vistas, boolean activa) {
+    public Pregunta() {
+    }
+
+    public Pregunta(int idpregunta,Usuario usuario,String titulo,String detalles,Date fecha,Integer vistas,Boolean activa){
+        this.idpregunta = idpregunta;
         this.usuario = usuario;
         this.titulo = titulo;
         this.detalles = detalles;
@@ -31,15 +33,21 @@ public class Pregunta  implements java.io.Serializable {
         this.vistas = vistas;
         this.activa = activa;
     }
-
-	
-    public Pregunta(int idpregunta, Usuario usuario, String titulo,String detalles, Date fecha, Integer vistas, boolean activa) {
+    
+    public Pregunta(Usuario usuario,String titulo,String detalles,Date fecha,Integer vistas,Boolean activa){
+        this.usuario = usuario;
+        this.titulo = titulo;
+        this.detalles = detalles;
+        this.fecha = fecha;
+        this.vistas = vistas;
+        this.activa = activa;
+    }
+    
+    public Pregunta(int idpregunta, Usuario usuario, String titulo, Date fecha, boolean activa) {
         this.idpregunta = idpregunta;
         this.usuario = usuario;
         this.titulo = titulo;
-        this.detalles=detalles;
         this.fecha = fecha;
-        this.vistas = vistas;
         this.activa = activa;
     }
     public Pregunta(int idpregunta, Usuario usuario, String titulo, String detalles, Date fecha, Integer vistas, boolean activa, Set respuestas) {
