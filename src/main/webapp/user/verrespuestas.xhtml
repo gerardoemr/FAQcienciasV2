@@ -55,12 +55,7 @@
                                                  actionListener="#{eliminarRespuesta.eliminaRespuesta(respuesta)}"
                                                  ajax="false"
                                                  onclick="if (! confirm('¿Estás seguro? La respuesta sera eliminada permanentemente.')) return false"
-                                                 rendered="#{actualizarRespuesta.esDelUsuario(respuesta)}"/>
-                                <p:commandButton value="Eliminar Respuesta" 
-                                                 actionListener="#{eliminarRespuesta.eliminaRespuesta(respuesta)}"
-                                                 ajax="false"
-                                                 onclick="if (! confirm('¿Estás seguro? La respuesta sera eliminada permanentemente.')) return false"
-                                                 rendered="#{user.administrador and !actualizarRespuesta.esDelUsuario(respuesta)}"/>
+                                                 rendered="#{actualizarRespuesta.esDelUsuario(respuesta)or user.administrador}"/>
                             </h:form>
                         </p:fieldset>
                     </p:column>

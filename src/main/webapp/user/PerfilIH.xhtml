@@ -45,16 +45,17 @@
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Nombre:" />
-                                <h:outputText value="#{user.nombre}" style="font-weight: bold"/>
+                                <h:inputText value="#{actualizarUsuario.nombre}" style="font-weight: bold"/>
 
                                 <h:outputText value="Correo:" />
-                                <h:outputText value="#{user.correo}" style="font-weight: bold"/>
+                                <h:outputText value="#{actualizarUsuario.correo}" style="font-weight: bold"/>
 
                                 <h:outputText value="Password:" />
-                                <h:inputSecret value="#{user.contrasena}" disabled="true" readonly="true" redisplay="true" style="font-weight: bold"/>
+                                <h:inputSecret value="#{actualizarUsuario.contrasena}" disabled="false" readonly="false" redisplay="true" style="font-weight: bold"/>
                                 
                                 <h:outputText value="Fecha de Nacimiento:" />
-                                <h:outputText value="#{user.fechanac}" style="font-weight: bold"/>      
+                                <p:calendar id = "fecha" value="#{actualizarUsuario.fechanac}" yearRange="c-100:c+100" navigator="true"
+                                        required="true" requiredMessage="Campo vacío. Ingrese una fecha"/>    
                             </h:panelGrid>
                         </p:outputPanel>
  
@@ -69,6 +70,7 @@
                     
                     <p:commandButton value="Eliminar Perfil" action="#{cRUDUsuario.eliminaPerfil(user)}" style="width: 30%; margin-left: 12px"
                                          onclick="if (! confirm('¿Estás seguro? Toda tu información personal será eliminada.')) return false"/>
+                    <p:commandButton value="Acualizar Perfil" action="#{actualizarUsuario.actualizarUsuario(user)}" style="width: 30%; margin-left: 12px"/>
                 </h:form>
                 
             </div>
