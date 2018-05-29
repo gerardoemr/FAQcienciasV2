@@ -5,93 +5,50 @@ package Controlador;
  * @author gerardo
  */
 import java.io.*;
+import java.util.Base64;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @RequestScoped
 public class FileUploadView implements Serializable {  
-
-    private UploadedFile foto;
-    private String msg;
-
-    public UploadedFile getFoto() {
-        return foto;
-    }
-
-    public void setFoto(UploadedFile foto) {
-        this.foto = foto;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
     
-    public void validaFoto(Usuario u){
+    private String correo;
+    
+    
+    public void handleFileUpload(FileUploadEvent event) {
+        Usuario u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
         UsuarioDAO udao = new UsuarioDAO();
-        if(this.foto != null ){
-                String fileName = foto.getFileName();
-                //Verifico la extension
-                if(fileName.contains(".")){
-                    String[] extension = fileName.split("\\.",2);
-                    System.out.println(fileName+extension.length+extension[1]);
-                    //Si la extension es correcta la guardamos
-                    if(extension[1].compareTo("png")==0||extension[1].compareTo("jpg")==0||extension[1].compareTo("jpge")==0){
-                        u.setImagen("images/"+u.getNombre()+fileName);
-                        this.subeFoto(u);
-                    }else{
-                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Imagen no permtida", "extensión inválida"+extension[1]));
-                        this.msg = fileName;
-                        this.foto =null;
-                    }
-                }
-                else{
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Imagen no permtida", "la extensión "));
-                    this.msg = fileName;
-                    this.foto =null;
-                }
-            
-            }else{
-                u.setImagen("images/usuario.png");
-                System.out.println("No se cargó la foto");
-            }
+        byte[] archivo = Base64.getEncoder().encode(event.getFile().getContents());
+        //System.out.println(new String(archivo));
+        //System.out.println(event.getFile().getContentType());
+        u.setImagen(new String(archivo));
+        u.setFormato(event.getFile().getContentType());
         udao.actualiza(u);
+        try{
+            recarga();
+        }catch(IOException e){
+            
+        }      
     }
-    
-    public void subeFoto(Usuario u){
-        String fileName = u.getNombre()+foto.getFileName();
-        //String contentType = foto.getContentType();
-        
-        try {
-            InputStream entrada = foto.getInputstream();
-            //obtenemos la ruta de la aplicacion
-            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-            String destination = (servletContext.getRealPath("/"))+"images/";
-            System.out.println(destination);
-            OutputStream out = new FileOutputStream(new File(destination + fileName));
-            int read = 0; 
-            byte[] bytes = new byte[1024]; 
-            while ((read = entrada.read(bytes)) != -1) {
-                System.out.println(read);
-                out.write(bytes, 0, read);
-            }
-            entrada.close();
-            out.flush();
-            out.close();
-        }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+     
+     /**
+     * Método que actualiza la vista verUsuario.xhtml
+     * @throws IOException 
+     */
+    public void recarga() throws IOException {
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
-   
+     
 }  

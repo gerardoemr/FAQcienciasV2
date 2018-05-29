@@ -66,4 +66,17 @@ public class CRUDUsuario {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
     }
+    
+    public String verImagen(Usuario u){
+        String a;
+        String b;
+        String imagen = "/images/perfil.png";
+        if (u.getImagen() != null && u.getFormato() != null)
+        {
+            a = u.getFormato();
+            b = u.getImagen();
+            imagen = "data:"+a+";base64,"+b;
+        }
+       return imagen;
+    }
 }
