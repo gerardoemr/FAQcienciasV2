@@ -27,7 +27,7 @@ public class FileUploadView implements Serializable {
     public void handleFileUpload(FileUploadEvent event) {
         Usuario u = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
         FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
-        FacesContext.getCurrentInstance().addMessage(null, message);
+       
         UsuarioDAO udao = new UsuarioDAO();
         byte[] archivo = Base64.getEncoder().encode(event.getFile().getContents());
         //System.out.println(new String(archivo));
@@ -36,19 +36,19 @@ public class FileUploadView implements Serializable {
         u.setFormato(event.getFile().getContentType());
         udao.actualiza(u);
         try{
-            recarga();
-        }catch(IOException e){
-            
-        }      
+            recarga(message);
+        }catch(IOException e){    
+        }
     }
      
      /**
      * Método que actualiza la vista verUsuario.xhtml
      * @throws IOException 
      */
-    public void recarga() throws IOException {
+    public void recarga(FacesMessage message) throws IOException {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
      
 }  
