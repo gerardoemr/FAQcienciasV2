@@ -107,13 +107,11 @@ public class ActualizarUsuario {
         this.imagen = imagen;
     }
      
-     public String actualizarUsuario(Usuario user) {         
-         FacesMessage message;
-         
-         Usuario usuario = new Usuario (user.getIdusuario(), nombre, fechanac, user.getCorreo(), contrasena,imagen, user.getFormato());
+     public String actualizarUsuario(Usuario user) {                
+         Usuario usuario = new Usuario (user.getIdusuario(), nombre, fechanac, user.getCorreo(), false, contrasena, true, imagen, user.getFormato());
          UsuarioDAO ud = new UsuarioDAO();
          ud.actualiza(usuario);
-                     
+         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", usuario);
         return "InicioIH";
      }
     

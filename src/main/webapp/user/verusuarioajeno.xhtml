@@ -29,7 +29,7 @@
             <div class="ui-g-6">
                 <h:form id="form">
                     <h:panelGrid columns="2" style="width:60%" columnClasses="logo,detail">
-                        <h:graphicImage value="/images/perfil.png" />   
+                        <h:graphicImage value="#{cRUDUsuario.verImagen(verUsuario.usuario)}" style="max-width: 300px; max-height: 300px;" />    
                         <p:outputPanel>
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputText value="Nombre:" />
@@ -43,6 +43,7 @@
                             </h:panelGrid>
                         </p:outputPanel>
                     </h:panelGrid>
+                    <p:commandButton value="Inicio" action="InicioIH" icon="ui-icon-arrowreturnthick-1-w" />                      
                 </h:form>
             </div>
             <div class="ui-g-2"></div>

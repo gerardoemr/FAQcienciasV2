@@ -27,6 +27,9 @@
         </h:form>
         <div class="ui-g">
             <div class="ui-fluid">
+                <p:commandButton value="opciones" oncomplete="PF('sidebar1').show()" icon="menu"  />
+                <p:sidebar widgetVar="sidebar1" baseZIndex="8000">
+                    <h1 style="font-weight:normal">OPCIONES</h1>
                 <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
                     <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
                 </h:panelGrid>
@@ -35,6 +38,7 @@
                     <p:commandButton value="Mis Preguntas" action= "MisPreguntas" style="vertical-align: middle"/>
                     <p:commandButton value="Mis Respuestas" action= "MisRespuestas" style="vertical-align: middle"/>
                 </h:panelGrid>
+                </p:sidebar>
             </div>
             <div class="ui-g-6">
                <p:dataTable value="#{verPregunta.preguntasUsuario(user.idusuario)}" var="pregunta" rows="7"
@@ -70,6 +74,7 @@
                 </p:dataTable> 
                 <h:form>
                     <p:commandButton value="Postular Pregunta" action= "VistaPostularPregunta" style="vertical-align: middle"/>
+                    <p:commandButton value="Inicio" action="InicioIH" icon="ui-icon-arrowreturnthick-1-w" />                      
                 </h:form>
             </div>
             <div class="ui-g-2"><p style="font-family: sans-serif">Bienvenido, #{user.nombre}</p></div>

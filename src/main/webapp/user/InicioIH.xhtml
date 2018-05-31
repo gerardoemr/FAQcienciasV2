@@ -27,14 +27,18 @@
         </h:form>
         <div class="ui-g">
             <div class="ui-fluid">
-                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
-                    <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
-                </h:panelGrid>
-                <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
-                    <p:commandButton value="Mi Perfil" action= "/user/PerfilIH?facesRedirect=true"  style="vertical-align: middle"/>
-                    <p:commandButton value="Mis Preguntas" action= "/user/MisPreguntas?facesRedirect=true" style="vertical-align: middle"/>
-                    <p:commandButton value="Mis Respuestas" action= "/user/MisRespuestas?facesRedirect=true" style="vertical-align: middle"/>
-                </h:panelGrid>
+                <p:commandButton value="opciones" oncomplete="PF('sidebar1').show()" icon="menu"  />
+                <p:sidebar widgetVar="sidebar1" baseZIndex="8000">
+                    <h1 style="font-weight:normal">OPCIONES</h1>
+                    <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{user.administrador}">
+                        <p:commandButton value="Ver Usuarios" action= "verUsuario" style="vertical-align: middle"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" style="padding-left: 60px" rendered="#{!user.administrador}">
+                        <p:commandButton value="Mi Perfil" action= "/user/PerfilIH"  style="vertical-align: middle"/>
+                        <p:commandButton value="Mis Preguntas" action= "/user/MisPreguntas" style="vertical-align: middle"/>
+                        <p:commandButton value="Mis Respuestas" action= "/user/MisRespuestas" style="vertical-align: middle"/>
+                        </h:panelGrid>
+                </p:sidebar>
             </div>
             <div class="ui-g-6">
                <p:dataTable value="#{verPregunta.preguntas}" var="pregunta" rows="7"
